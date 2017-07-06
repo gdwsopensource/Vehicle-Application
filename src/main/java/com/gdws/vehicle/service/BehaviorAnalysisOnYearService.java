@@ -20,6 +20,13 @@ public interface BehaviorAnalysisOnYearService {
 	 * @param plateNo
 	 * @return
 	 */
-	public JSONObject analysisOnYear(String plateNo);
+	JSONObject analysisOnYear(String plateNo);
+	/**
+	 * 近一年某月的行为分析
+	 * @param plateNo
+	 * @param monthNum
+	 * @return
+	 */
+//	JSONObject analysisOnYear(String plateNo,String monthNum);
 
 }

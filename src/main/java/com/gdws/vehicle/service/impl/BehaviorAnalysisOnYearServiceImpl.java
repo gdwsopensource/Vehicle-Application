@@ -25,15 +25,22 @@ import com.gdws.vehicle.service.BehaviorAnalysisOnYearService;
  * @version 1.0, 2017年7月5日 下午6:52:12
  */
 @Service
-public class BehaviorAnalysisOnYearServiceImpl implements BehaviorAnalysisOnYearService{
-@Autowired
-private BehaviorAnalysisOnYearRepository behaviorAnalysisOnYearRepository;
-	@Override
-	public JSONObject analysisOnYear(String plateNo) {
+public class BehaviorAnalysisOnYearServiceImpl implements BehaviorAnalysisOnYearService {
+	@Autowired
+	private BehaviorAnalysisOnYearRepository behaviorAnalysisOnYearRepository;
+
+	 @Override
+	 public JSONObject analysisOnYear(String plateNo) {
+	/**
+	 * 近一年某月行为分析
+	 */
+//	@Override
+//	public JSONObject analysisOnYear(String plateNo, String monthNum) {
 		// TODO Auto-generated method stub
-		JSONObject obj =new JSONObject();
-		try{
+		JSONObject obj = new JSONObject();
+		try {
 			List<ResWithLngAndLat> list = behaviorAnalysisOnYearRepository.analysisOnYear(plateNo);
+//			List<ResWithLngAndLat> list = behaviorAnalysisOnYearRepository.analysisOnYear(plateNo,monthNum);
 			Iterator<ResWithLngAndLat> listIter = list.iterator();
 			if (listIter.hasNext()) {
 				List<JSONObject> data = new ArrayList<JSONObject>();
@@ -42,12 +49,12 @@ private BehaviorAnalysisOnYearRepository behaviorAnalysisOnYearRepository;
 					JSONObject tmp = new JSONObject();
 					// String[] arr = { res.getLng(),res.getLat() };
 					Double[] arr = new Double[2];
-					//check the lng and lat value ,if not valid, return default value.
-					if(res.getLng()!=null && res.getLat()!=null ){
+					// check the lng and lat value ,if not valid, return default
+					// value.
+					if (res.getLng() != null && res.getLat() != null) {
 						arr[0] = Double.parseDouble(res.getLng());
 						arr[1] = Double.parseDouble(res.getLat());
-					}
-					else{
+					} else {
 						arr[0] = 113.0;
 						arr[1] = 23.0;
 					}
@@ -64,7 +71,7 @@ private BehaviorAnalysisOnYearRepository behaviorAnalysisOnYearRepository;
 				obj.put("message", "success");
 				obj.put("data", "null");
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			obj.put("code", 500);
 			obj.put("message", "error");
 			obj.put("data", null);

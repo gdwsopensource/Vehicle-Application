@@ -20,5 +20,5 @@ public interface HighFrequencyAnalysisService {
 	 * @param crossTime
 	 * @return
 	 */
-	public JSONObject highFrequencyAnalysis(String crossTime);
+	 JSONObject highFrequencyAnalysis(String crossTime);
 }

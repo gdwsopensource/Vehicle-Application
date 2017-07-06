@@ -21,7 +21,7 @@ public interface CarOverviewService {
 	 * @param crossTime
 	 * @return
 	 */
-	public JSONObject getCrossOverview(String crossTime);
+	 JSONObject getCrossOverview(String crossTime);
 
 	/**
 	 * 获取卡口过车信息
@@ -30,5 +30,5 @@ public interface CarOverviewService {
 	 * @param crossTime
 	 * @return
 	 */
-	public JSONObject getCarOverviewCross(String crossId, String crossTime);
+	 JSONObject getCarOverviewCross(String crossId, String crossTime);
 }

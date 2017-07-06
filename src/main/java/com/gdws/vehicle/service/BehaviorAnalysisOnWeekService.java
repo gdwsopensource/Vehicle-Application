@@ -20,5 +20,5 @@ public interface BehaviorAnalysisOnWeekService {
 	 * @param plateNo
 	 * @return
 	 */
-	public JSONObject analysisOnWeek(String plateNo);
+	 JSONObject analysisOnWeek(String plateNo);
 }

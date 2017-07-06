@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.gdws.vehicle.entity.ResWithLngAndLat;
+import com.gdws.vehicle.repository.BehaviorAnalysisOnMonthRepository;
 import com.gdws.vehicle.service.BehaviorAnalysisOnMonthService;
 
 /**
@@ -29,10 +30,30 @@ public class BehaviorAnalysisOnMonthController {
 	@Autowired
 	private BehaviorAnalysisOnMonthService behaviorAnalysisOnMonthService;
 
+	/**
+	 * 
+	 * @param cb
+	 * @param plateNo
+	 * @return
+	 */
 	@RequestMapping("analysisOnMonth")
 	@ResponseBody
 	public JSONPObject analysisOnMonth(String cb, String plateNo) {
 		JSONObject str = behaviorAnalysisOnMonthService.analysisOnMonth(plateNo);
 		return new JSONPObject(cb, str.toString());
 	}
+
+	/**
+	 * 近一个月某天行为分析
+	 * @param cb
+	 * @param plateNo
+	 * @param crossTime
+	 * @return
+	 */
+//	@RequestMapping("analysisOnMonth")
+//	@ResponseBody
+//	public JSONPObject analysisOnMonth(String cb, String plateNo, String crossTime) {
+//		JSONObject str = behaviorAnalysisOnMonthService.analysisOnMonth(plateNo, crossTime);
+//		return new JSONPObject(cb, str.toString());
+//	}
 }
