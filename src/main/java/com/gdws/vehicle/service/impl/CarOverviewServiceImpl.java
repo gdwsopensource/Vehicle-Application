@@ -64,6 +64,8 @@ public class CarOverviewServiceImpl implements CarOverviewService {
 					tmp.put("cross_id", crossInfo.getCrossId());
 					tmp.put("lng", crossInfo.getLongitude());
 					tmp.put("lat", crossInfo.getLatitude());
+					tmp.put("gpslng", crossInfo.getGpslongitude());
+					tmp.put("gpslat", crossInfo.getGpslatitude());
 					list.add(tmp);
 				}
 				obj.put("data", list);
