@@ -25,6 +25,6 @@ public interface HighFrequencyAnalysisRepository extends JpaRepository<HighFrequ
 	 * @param crossTime
 	 * @return
 	 */
-	@Query(value = "SELECT id as id,plate_no as plate_no,alert_type as alert_type,count(cross_id) as count from car_overview_cross where cross_time=?1 GROUP BY plate_no ORDER BY COUNT(cross_id) desc;", nativeQuery = true)
+	@Query(value = "SELECT id as id,plate_no as plate_no,alert_type as alert_type,count(cross_id) as count from car_cross_info where date_format(alert_time, '%Y-%m-%d')=?1 GROUP BY plate_no ORDER BY COUNT(cross_id) desc;", nativeQuery = true)
 	List<HighFrequencyAnalysisRes> getHighFrequencyOneDay(String crossTime);
 }
