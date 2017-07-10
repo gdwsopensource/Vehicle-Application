@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.gdws.vehicle.entity.TrankAnalysis;
-import com.gdws.vehicle.repository.TrankAnalysisRespository;
 import com.gdws.vehicle.service.TrankAnalysisService;
 
 /**
@@ -38,11 +37,5 @@ public class TrankAnalysisController {
 		return new JSONPObject(cb, str.toString());
 	}
 	
-	@Autowired
-	private TrankAnalysisRespository trankAnalysisRespository;
-	
-	@RequestMapping("test")
-	List<TrankAnalysis> test(@RequestParam String plateNo,@RequestParam String startTime,@RequestParam String endTime){
-		return trankAnalysisRespository.trankAnalysisOnPlateNo(plateNo, startTime, endTime);
-	}
+
 }
