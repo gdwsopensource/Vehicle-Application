@@ -29,12 +29,19 @@ public class BehaviorAnalysisOnMonthServiceImpl implements BehaviorAnalysisOnMon
 	@Autowired
 	private BehaviorAnalysisOnMonthRepository behaviorAnalysisOnMonthRepository;
 
-	@Override
-	public JSONObject analysisOnMonth(String plateNo) {
+	 @Override
+	 public JSONObject analysisOnMonth(String plateNo) {
+		 /**
+		  * 近一个月某天行为分析
+		  */
+//	@Override
+//	public JSONObject analysisOnMonth(String plateNo, String crossTime) {
 		// TODO Auto-generated method stub
 		JSONObject obj = new JSONObject();
 		try {
 			List<ResWithLngAndLat> list = behaviorAnalysisOnMonthRepository.analysisOnMonth(plateNo);
+			
+//			 List<ResWithLngAndLat> list = behaviorAnalysisOnMonthRepository.analysisOnMonth(plateNo, crossTime);
 			Iterator<ResWithLngAndLat> listIter = list.iterator();
 			if (listIter.hasNext()) {
 				List<JSONObject> data = new ArrayList<JSONObject>();
@@ -43,12 +50,12 @@ public class BehaviorAnalysisOnMonthServiceImpl implements BehaviorAnalysisOnMon
 					JSONObject tmp = new JSONObject();
 					// String[] arr = { res.getLng(),res.getLat() };
 					Double[] arr = new Double[2];
-					//check the lng and lat value ,if not valid, return default value.
-					if(res.getLng()!=null && res.getLat()!=null ){
+					// check the lng and lat value ,if not valid, return default
+					// value.
+					if (res.getLng() != null && res.getLat() != null) {
 						arr[0] = Double.parseDouble(res.getLng());
 						arr[1] = Double.parseDouble(res.getLat());
-					}
-					else{
+					} else {
 						arr[0] = 113.0;
 						arr[1] = 23.0;
 					}

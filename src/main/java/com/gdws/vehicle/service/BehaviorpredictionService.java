@@ -15,5 +15,10 @@ import com.alibaba.fastjson.JSONObject;
  * @version 1.0, 2017年7月1日 下午4:46:41
  */
 public interface BehaviorpredictionService {
-	public JSONObject behaviorPredict(String plateNo);
+	/**
+	 * 
+	 * @param plateNo
+	 * @return
+	 */
+	 JSONObject behaviorPredict(String plateNo);
 }

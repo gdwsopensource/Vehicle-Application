@@ -22,5 +22,5 @@ public interface BehaviorAnalysisOneDayService {
 	 * @param plateNo
 	 * @return
 	 */
-	public JSONObject analysisOneDay(String crossTime, String plateNo);
+	JSONObject analysisOneDay(String crossTime, String plateNo);
 }

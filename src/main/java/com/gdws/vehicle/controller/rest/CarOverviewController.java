@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.gdws.vehicle.entity.CarOverview;
 import com.gdws.vehicle.service.CarOverviewService;
 
 /**
@@ -35,10 +36,10 @@ public class CarOverviewController {
 	 * @param crossTime
 	 * @return
 	 */
-	
+
 	@RequestMapping("/getCarOverview")
 	@ResponseBody
-	public JSONPObject getCarOverview(String cb,String crossTime) {
+	public JSONPObject getCarOverview(String cb, String crossTime) {
 		JSONObject str = carOverviewService.getCrossOverview(crossTime);
 		return new JSONPObject(cb, str.toString());
 	}

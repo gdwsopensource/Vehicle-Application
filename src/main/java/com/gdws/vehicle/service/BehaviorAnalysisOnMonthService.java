@@ -16,9 +16,14 @@ import com.alibaba.fastjson.JSONObject;
  */
 public interface BehaviorAnalysisOnMonthService {
 	/**
-	 * 
+	 * 近一个月总行为分析
 	 * @param plateNo
 	 * @return
 	 */
-	public JSONObject analysisOnMonth(String plateNo);
+	JSONObject analysisOnMonth(String plateNo);
+	
+	/**
+	 * 近一个月某天行为分析
+	 */
+	// JSONObject analysisOnMonth(String plateNo, String crossTime);
 }

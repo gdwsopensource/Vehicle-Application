@@ -25,42 +25,72 @@ public class CrossInfo {
 	private String crossName;
 	private String longitude;
 	private String latitude;
+	private String gpslongitude;
+	private String gpslatitude;
 	private String comment1;
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getCrossId() {
 		return crossId;
 	}
+
 	public void setCrossId(String crossId) {
 		this.crossId = crossId;
 	}
+
 	public String getCrossName() {
 		return crossName;
 	}
+
 	public void setCrossName(String crossName) {
 		this.crossName = crossName;
 	}
+
 	public String getLongitude() {
 		return longitude;
 	}
+
 	public void setLongitude(String longitude) {
 		this.longitude = longitude;
 	}
+
 	public String getLatitude() {
 		return latitude;
 	}
+
 	public void setLatitude(String latitude) {
 		this.latitude = latitude;
 	}
+
+	public String getGpslongitude() {
+		return gpslongitude;
+	}
+
+	public void setGpslongitude(String gpslongitude) {
+		this.gpslongitude = gpslongitude;
+	}
+
+	public String getGpslatitude() {
+		return gpslatitude;
+	}
+
+	public void setGpslatitude(String gpslatitude) {
+		this.gpslatitude = gpslatitude;
+	}
+
 	public String getComment1() {
 		return comment1;
 	}
+
 	public void setComment1(String comment1) {
 		this.comment1 = comment1;
 	}
-	
+
 }
