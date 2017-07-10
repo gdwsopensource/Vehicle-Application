@@ -23,72 +23,112 @@ public class CrossInfo {
 	private int id;
 	private String crossId;
 	private String crossName;
-	private String longitude;
-	private String latitude;
-	private String gpslongitude;
-	private String gpslatitude;
+	private String bdLongitude;
+	private String bdLatitude;
+	private String gpsLongitude;
+	private String gpsLatitude;
 	private String comment1;
 
+	/** @return 返回{@link #id} */
 	public int getId() {
 		return id;
 	}
 
+	/**
+	 * @param id
+	 *            设置{@link #id}
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/** @return 返回{@link #crossId} */
 	public String getCrossId() {
 		return crossId;
 	}
 
+	/**
+	 * @param crossId
+	 *            设置{@link #crossId}
+	 */
 	public void setCrossId(String crossId) {
 		this.crossId = crossId;
 	}
 
+	/** @return 返回{@link #crossName} */
 	public String getCrossName() {
 		return crossName;
 	}
 
+	/**
+	 * @param crossName
+	 *            设置{@link #crossName}
+	 */
 	public void setCrossName(String crossName) {
 		this.crossName = crossName;
 	}
 
-	public String getLongitude() {
-		return longitude;
+	/** @return 返回{@link #bdLongitude} */
+	public String getBdLongitude() {
+		return bdLongitude;
 	}
 
-	public void setLongitude(String longitude) {
-		this.longitude = longitude;
+	/**
+	 * @param bdLongitude
+	 *            设置{@link #bdLongitude}
+	 */
+	public void setBdLongitude(String bdLongitude) {
+		this.bdLongitude = bdLongitude;
 	}
 
-	public String getLatitude() {
-		return latitude;
+	/** @return 返回{@link #bdLatitude} */
+	public String getBdLatitude() {
+		return bdLatitude;
 	}
 
-	public void setLatitude(String latitude) {
-		this.latitude = latitude;
+	/**
+	 * @param bdLatitude
+	 *            设置{@link #bdLatitude}
+	 */
+	public void setBdLatitude(String bdLatitude) {
+		this.bdLatitude = bdLatitude;
 	}
 
-	public String getGpslongitude() {
-		return gpslongitude;
+	/** @return 返回{@link #gpsLongitude} */
+	public String getGpsLongitude() {
+		return gpsLongitude;
 	}
 
-	public void setGpslongitude(String gpslongitude) {
-		this.gpslongitude = gpslongitude;
+	/**
+	 * @param gpsLongitude
+	 *            设置{@link #gpsLongitude}
+	 */
+	public void setGpsLongitude(String gpsLongitude) {
+		this.gpsLongitude = gpsLongitude;
 	}
 
-	public String getGpslatitude() {
-		return gpslatitude;
+	/** @return 返回{@link #gpsLatitude} */
+	public String getGpsLatitude() {
+		return gpsLatitude;
 	}
 
-	public void setGpslatitude(String gpslatitude) {
-		this.gpslatitude = gpslatitude;
+	/**
+	 * @param gpsLatitude
+	 *            设置{@link #gpsLatitude}
+	 */
+	public void setGpsLatitude(String gpsLatitude) {
+		this.gpsLatitude = gpsLatitude;
 	}
 
+	/** @return 返回{@link #comment1} */
 	public String getComment1() {
 		return comment1;
 	}
 
+	/**
+	 * @param comment1
+	 *            设置{@link #comment1}
+	 */
 	public void setComment1(String comment1) {
 		this.comment1 = comment1;
 	}

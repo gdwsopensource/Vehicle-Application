@@ -22,64 +22,99 @@ public class CarCrossDayCnt {
 	@GeneratedValue
 	private int id;
 	private String plateNo;
-	private String crossTime;
+	private String crossDate;
 	private String weekNum;
 	private int crossCnt;
 	private String crossId;
 	private String comment1;
 
+	/** @return 返回{@link #id} */
 	public int getId() {
 		return id;
 	}
 
+	/**
+	 * @param id
+	 *            设置{@link #id}
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/** @return 返回{@link #plateNo} */
 	public String getPlateNo() {
 		return plateNo;
 	}
 
+	/**
+	 * @param plateNo
+	 *            设置{@link #plateNo}
+	 */
 	public void setPlateNo(String plateNo) {
 		this.plateNo = plateNo;
 	}
 
-	public String getCrossTime() {
-		return crossTime;
+	/** @return 返回{@link #crossDate} */
+	public String getCrossDate() {
+		return crossDate;
 	}
 
-	public void setCrossTime(String crossTime) {
-		this.crossTime = crossTime;
+	/**
+	 * @param crossDate
+	 *            设置{@link #crossDate}
+	 */
+	public void setCrossDate(String crossDate) {
+		this.crossDate = crossDate;
 	}
 
+	/** @return 返回{@link #weekNum} */
 	public String getWeekNum() {
 		return weekNum;
 	}
 
+	/**
+	 * @param weekNum
+	 *            设置{@link #weekNum}
+	 */
 	public void setWeekNum(String weekNum) {
 		this.weekNum = weekNum;
 	}
 
+	/** @return 返回{@link #crossCnt} */
 	public int getCrossCnt() {
 		return crossCnt;
 	}
 
+	/**
+	 * @param crossCnt
+	 *            设置{@link #crossCnt}
+	 */
 	public void setCrossCnt(int crossCnt) {
 		this.crossCnt = crossCnt;
 	}
 
+	/** @return 返回{@link #crossId} */
 	public String getCrossId() {
 		return crossId;
 	}
 
+	/**
+	 * @param crossId
+	 *            设置{@link #crossId}
+	 */
 	public void setCrossId(String crossId) {
 		this.crossId = crossId;
 	}
 
+	/** @return 返回{@link #comment1} */
 	public String getComment1() {
 		return comment1;
 	}
 
+	/**
+	 * @param comment1
+	 *            设置{@link #comment1}
+	 */
 	public void setComment1(String comment1) {
 		this.comment1 = comment1;
 	}

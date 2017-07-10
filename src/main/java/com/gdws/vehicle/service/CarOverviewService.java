@@ -18,17 +18,17 @@ public interface CarOverviewService {
 	/**
 	 * 获取概览信息
 	 * 
-	 * @param crossTime
+	 * @param crossDate
 	 * @return
 	 */
-	 JSONObject getCrossOverview(String crossTime);
+	 JSONObject getCrossOverview(String crossDate);
 
 	/**
 	 * 获取卡口过车信息
 	 * 
 	 * @param crossName
-	 * @param crossTime
+	 * @param crossDate
 	 * @return
 	 */
-	 JSONObject getCarOverviewCross(String crossId, String crossTime);
+	 JSONObject getCarOverviewCross(String crossId, String crossDate);
 }

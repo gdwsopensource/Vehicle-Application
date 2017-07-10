@@ -33,7 +33,7 @@ public class HighFrequencyAnalysisController {
 	/**
 	 * 
 	 * @param cb
-	 * @param crossTime
+	 * @param crossDate
 	 * @return
 	 */
 	@RequestMapping("highFrequencyAnalysis")

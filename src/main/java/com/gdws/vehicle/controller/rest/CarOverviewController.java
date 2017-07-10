@@ -33,14 +33,14 @@ public class CarOverviewController {
 	/**
 	 * 获取每日预警数据
 	 * 
-	 * @param crossTime
+	 * @param crossDate
 	 * @return
 	 */
 
 	@RequestMapping("/getCarOverview")
 	@ResponseBody
-	public JSONPObject getCarOverview(String cb, String crossTime) {
-		JSONObject str = carOverviewService.getCrossOverview(crossTime);
+	public JSONPObject getCarOverview(String cb, String crossDate) {
+		JSONObject str = carOverviewService.getCrossOverview(crossDate);
 		return new JSONPObject(cb, str.toString());
 	}
 

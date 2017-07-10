@@ -17,7 +17,8 @@ import com.alibaba.fastjson.JSONObject;
 public interface HighFrequencyAnalysisService {
 	/**
 	 * 
-	 * @param crossTime
+	 * @param startTime
+	 * @param endTime
 	 * @return
 	 */
 	 JSONObject highFrequencyAnalysisAllCross(String startTime,String endTime);

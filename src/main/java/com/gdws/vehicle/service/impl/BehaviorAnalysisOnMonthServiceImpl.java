@@ -35,13 +35,13 @@ public class BehaviorAnalysisOnMonthServiceImpl implements BehaviorAnalysisOnMon
 		  * 近一个月某天行为分析
 		  */
 //	@Override
-//	public JSONObject analysisOnMonth(String plateNo, String crossTime) {
+//	public JSONObject analysisOnMonth(String plateNo, String crossDate) {
 		// TODO Auto-generated method stub
 		JSONObject obj = new JSONObject();
 		try {
 			List<ResWithLngAndLat> list = behaviorAnalysisOnMonthRepository.analysisOnMonth(plateNo);
 			
-//			 List<ResWithLngAndLat> list = behaviorAnalysisOnMonthRepository.analysisOnMonth(plateNo, crossTime);
+//			 List<ResWithLngAndLat> list = behaviorAnalysisOnMonthRepository.analysisOnMonth(plateNo, crossDate);
 			Iterator<ResWithLngAndLat> listIter = list.iterator();
 			if (listIter.hasNext()) {
 				List<JSONObject> data = new ArrayList<JSONObject>();
