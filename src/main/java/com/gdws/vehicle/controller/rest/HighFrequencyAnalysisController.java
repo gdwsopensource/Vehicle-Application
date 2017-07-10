@@ -7,6 +7,8 @@
  */
 package com.gdws.vehicle.controller.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.gdws.vehicle.entity.HighFrequencyAnalysisRes;
+import com.gdws.vehicle.repository.HighFrequencyAnalysisRepository;
 import com.gdws.vehicle.service.HighFrequencyAnalysisService;
 
 /**
@@ -34,8 +38,20 @@ public class HighFrequencyAnalysisController {
 	 */
 	@RequestMapping("highFrequencyAnalysis")
 	@ResponseBody
-	public JSONPObject highFrequencyAnalysis(String cb, String searchTime) {
-		JSONObject str = service.highFrequencyAnalysis(searchTime);
+	public JSONPObject highFrequencyAnalysis(String cb, String startTime, String endTime) {
+		JSONObject str = service.highFrequencyAnalysisAllCross(startTime, endTime);
 		return new JSONPObject(cb, str.toString());
 	}
+
+	
+	@RequestMapping("highFrequencyAnalysisAccrodingCrossName")
+	@ResponseBody
+	public JSONPObject highFrequencyAnalysisAccrodingCrossName(String cb, String startTime, String endTime,
+			String crossName) {
+		JSONObject str = service.highFrequencyAnalysisAccrodingCrossName(startTime, endTime, crossName);
+		return new JSONPObject(cb, str.toString());
+	}
+	
+	
+	
 }

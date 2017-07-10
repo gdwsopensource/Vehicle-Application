@@ -23,7 +23,6 @@ public class CarCrossYearCnt {
 	private int id;
 	private String plateNo;
 	private String monthNum;
-	private String yearNum;
 	private int crossCnt;
 	private String crossId;
 	private String comment1;
@@ -50,14 +49,6 @@ public class CarCrossYearCnt {
 
 	public void setMonthNum(String monthNum) {
 		this.monthNum = monthNum;
-	}
-
-	public String getYearNum() {
-		return yearNum;
-	}
-
-	public void setYearNum(String yearNum) {
-		this.yearNum = yearNum;
 	}
 
 	public int getCrossCnt() {
