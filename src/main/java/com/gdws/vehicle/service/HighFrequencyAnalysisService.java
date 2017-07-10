@@ -20,5 +20,13 @@ public interface HighFrequencyAnalysisService {
 	 * @param crossTime
 	 * @return
 	 */
-	 JSONObject highFrequencyAnalysis(String crossTime);
+	 JSONObject highFrequencyAnalysisAllCross(String startTime,String endTime);
+
+	/**
+	 * @param startTime
+	 * @param endTime
+	 * @param crossName
+	 * @return
+	 */
+	JSONObject highFrequencyAnalysisAccrodingCrossName(String startTime, String endTime, String crossName);
 }
