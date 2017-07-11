@@ -1,9 +1,9 @@
 /*
- * File Name：CarOverviewController.java
+ * File Name：TrankAnalysisController.java
  *
  * Copyrighe：copyright@2017 GZSW Company, All Rights Reserved
  *
- * Create Time: 2017年6月28日 下午1:50:54
+ * Create Time: 2017年7月10日 下午2:26:00
  */
 package com.gdws.vehicle.controller.rest;
 
@@ -17,31 +17,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.gdws.vehicle.entity.CarOverview;
-import com.gdws.vehicle.service.CarOverviewService;
+import com.gdws.vehicle.entity.TrankAnalysis;
+import com.gdws.vehicle.service.TrankAnalysisService;
 
 /**
  *
- * @author Administrator (shinena_deng@163.com)
- * @version 1.0, 2017年6月28日 下午1:50:54
+ * @author vous (shinena_deng@163.com)
+ * @version 1.0, 2017年7月10日 下午2:26:00
  */
 @RestController
-public class CarOverviewController {
+public class TrankAnalysisController {
 	@Autowired
-	private CarOverviewService carOverviewService;
+	private TrankAnalysisService service;
 
-	/**
-	 * 获取每日预警数据
-	 * 
-	 * @param crossDate
-	 * @return
-	 */
-
-	@RequestMapping("/getCarOverview")
+	@RequestMapping("trankAnalysisOnPlateNo")
 	@ResponseBody
-	public JSONPObject getCarOverview(String cb, String crossDate) {
-		JSONObject str = carOverviewService.getCrossOverview(crossDate);
+	public JSONPObject  JSONPObject(String cb, String plateNo, String startTime, String endTime) {
+		JSONObject str = service.trankAnalysisOnPlateNo(plateNo, startTime, endTime);
 		return new JSONPObject(cb, str.toString());
 	}
+	
 
 }

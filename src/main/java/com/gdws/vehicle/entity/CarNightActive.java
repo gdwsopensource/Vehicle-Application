@@ -1,9 +1,9 @@
 /*
- * File Name：CarCrossDayCnt.java
+ * File Name：CarNightActive.java
  *
  * Copyrighe：copyright@2017 GZSW Company, All Rights Reserved
  *
- * Create Time: 2017年6月29日 下午12:40:35
+ * Create Time: 2017年7月11日 上午10:20:33
  */
 package com.gdws.vehicle.entity;
 
@@ -15,19 +15,20 @@ import javax.persistence.Id;
 
 /**
  *
- * @author Administrator (shinena_deng@163.com)
- * @version 1.0, 2017年6月29日 下午12:40:35
+ * @author vous (shinena_deng@163.com)
+ * @version 1.0, 2017年7月11日 上午10:20:33
  */
 @Entity
-public class CarCrossDayCnt {
+public class CarNightActive {
 	@Id
 	@GeneratedValue
 	private int id;
+	private String plateType;
 	private String plateNo;
 	private Date crossDate;
-	private String weekNum;
-	private int crossCnt;
-	private String crossId;
+	private int dayCrossCnt;
+	private int nightCrossCnt;
+	private String nightActive;
 	private String comment1;
 
 	/** @return 返回{@link #id} */
@@ -41,6 +42,19 @@ public class CarCrossDayCnt {
 	 */
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	/** @return 返回{@link #plateType} */
+	public String getPlateType() {
+		return plateType;
+	}
+
+	/**
+	 * @param plateType
+	 *            设置{@link #plateType}
+	 */
+	public void setPlateType(String plateType) {
+		this.plateType = plateType;
 	}
 
 	/** @return 返回{@link #plateNo} */
@@ -69,43 +83,43 @@ public class CarCrossDayCnt {
 		this.crossDate = crossDate;
 	}
 
-	/** @return 返回{@link #weekNum} */
-	public String getWeekNum() {
-		return weekNum;
+	/** @return 返回{@link #dayCrossCnt} */
+	public int getDayCrossCnt() {
+		return dayCrossCnt;
 	}
 
 	/**
-	 * @param weekNum
-	 *            设置{@link #weekNum}
+	 * @param dayCrossCnt
+	 *            设置{@link #dayCrossCnt}
 	 */
-	public void setWeekNum(String weekNum) {
-		this.weekNum = weekNum;
+	public void setDayCrossCnt(int dayCrossCnt) {
+		this.dayCrossCnt = dayCrossCnt;
 	}
 
-	/** @return 返回{@link #crossCnt} */
-	public int getCrossCnt() {
-		return crossCnt;
+	/** @return 返回{@link #nightCrossCnt} */
+	public int getNightCrossCnt() {
+		return nightCrossCnt;
 	}
 
 	/**
-	 * @param crossCnt
-	 *            设置{@link #crossCnt}
+	 * @param nightCrossCnt
+	 *            设置{@link #nightCrossCnt}
 	 */
-	public void setCrossCnt(int crossCnt) {
-		this.crossCnt = crossCnt;
+	public void setNightCrossCnt(int nightCrossCnt) {
+		this.nightCrossCnt = nightCrossCnt;
 	}
 
-	/** @return 返回{@link #crossId} */
-	public String getCrossId() {
-		return crossId;
+	/** @return 返回{@link #nightActive} */
+	public String getNightActive() {
+		return nightActive;
 	}
 
 	/**
-	 * @param crossId
-	 *            设置{@link #crossId}
+	 * @param nightActive
+	 *            设置{@link #nightActive}
 	 */
-	public void setCrossId(String crossId) {
-		this.crossId = crossId;
+	public void setNightActive(String nightActive) {
+		this.nightActive = nightActive;
 	}
 
 	/** @return 返回{@link #comment1} */
