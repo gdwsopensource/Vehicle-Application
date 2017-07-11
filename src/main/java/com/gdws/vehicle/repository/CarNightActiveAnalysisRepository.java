@@ -21,9 +21,9 @@ import com.gdws.vehicle.entity.CarNightActive;
  */
 public interface CarNightActiveAnalysisRepository extends JpaRepository<CarNightActive, Integer> {
 	
-	@Query(value = "select * from car_night_active where night_active=0", nativeQuery = true)
+	@Query(value = "select * from car_night_active where night_active=0 ORDER BY cross_date asc", nativeQuery = true)
 	List<CarNightActive> getAllCarNightActive();
 
-	@Query(value = "select * from car_night_active where plate_no=?1", nativeQuery = true)
+	@Query(value = "select * from car_night_active where plate_no=?1 ORDER BY cross_date asc", nativeQuery = true)
 	List<CarNightActive> getCarNightActiveByPlateNo(String plateNo);
 }

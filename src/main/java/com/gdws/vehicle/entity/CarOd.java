@@ -1,5 +1,5 @@
 /*
- * File Name：CarOD.java
+ * File Name：CarOd.java
  *
  * Copyrighe：copyright@2017 GZSW Company, All Rights Reserved
  *
@@ -17,7 +17,7 @@ import javax.persistence.Id;
  * @version 1.0, 2017年7月11日 上午10:59:50
  */
 @Entity
-public class CarOD {
+public class CarOd {
 	@Id
 	@GeneratedValue
 	private int id;
