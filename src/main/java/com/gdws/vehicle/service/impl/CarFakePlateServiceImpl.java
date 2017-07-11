@@ -35,7 +35,6 @@ public class CarFakePlateServiceImpl implements CarFakePlateService{
 		JSONObject obj = new JSONObject();
 		try{
 			List<CarFakePlate> carFakePlate=null;
-			System.out.println(plateNo);
 			if(plateNo==null || plateNo==""){
 				carFakePlate=carFakePlateRepository.getAllFakePlateCar();
 			}else{
@@ -68,7 +67,6 @@ public class CarFakePlateServiceImpl implements CarFakePlateService{
 		}catch (Exception e){
 			obj.put("code", 500);
 			obj.put("message","error");
-			obj.put("total", 0);
 			obj.put("data", null);
 			obj.put("time", new Timestamp(System.currentTimeMillis()));
 			e.printStackTrace();
