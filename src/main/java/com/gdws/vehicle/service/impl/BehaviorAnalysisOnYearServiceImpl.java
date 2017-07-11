@@ -35,12 +35,12 @@ public class BehaviorAnalysisOnYearServiceImpl implements BehaviorAnalysisOnYear
 	 * 近一年某月行为分析
 	 */
 //	@Override
-//	public JSONObject analysisOnYear(String plateNo, String monthNum) {
+//	public JSONObject analysisOnYear(String plateNo, String crossMonth) {
 		// TODO Auto-generated method stub
 		JSONObject obj = new JSONObject();
 		try {
 			List<ResWithLngAndLat> list = behaviorAnalysisOnYearRepository.analysisOnYear(plateNo);
-//			List<ResWithLngAndLat> list = behaviorAnalysisOnYearRepository.analysisOnYear(plateNo,monthNum);
+//			List<ResWithLngAndLat> list = behaviorAnalysisOnYearRepository.analysisOnYear(plateNo,crossMonth);
 			Iterator<ResWithLngAndLat> listIter = list.iterator();
 			if (listIter.hasNext()) {
 				List<JSONObject> data = new ArrayList<JSONObject>();
