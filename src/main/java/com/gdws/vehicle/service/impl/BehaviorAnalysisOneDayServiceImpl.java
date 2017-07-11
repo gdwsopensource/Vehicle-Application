@@ -34,17 +34,17 @@ public class BehaviorAnalysisOneDayServiceImpl implements BehaviorAnalysisOneDay
 	private CarCrossHourCntRepository carCrossHourCntRepository;
 
 	@Override
-	public JSONObject analysisOneDay(String crossTime, String  plateNo) {
+	public JSONObject analysisOneDay(String crossDate, String  plateNo) {
 		JSONObject obj = new JSONObject();
 		try {
-			List<CrossCount> crossCountList = crossCountRepository.getSixCross(crossTime, plateNo);
+			List<CrossCount> crossCountList = crossCountRepository.getSixCross(crossDate, plateNo);
 			Iterator<CrossCount> crossCountListIter = crossCountList.iterator();
 			if (crossCountListIter.hasNext()) {
 				List<JSONObject> data = new ArrayList<JSONObject>();
 				while (crossCountListIter.hasNext()) {
 					JSONObject tmpData = new JSONObject();
 					CrossCount crossCountTemp = crossCountListIter.next();
-					List<CarCrossHourCnt> carCrossHourCntList = carCrossHourCntRepository.getOneDayAnalysis(crossTime,
+					List<CarCrossHourCnt> carCrossHourCntList = carCrossHourCntRepository.getOneDayAnalysis(crossDate,
 							plateNo, crossCountTemp.getCrossId());
 					Iterator<CarCrossHourCnt> carCrossHourCntListIter = carCrossHourCntList.iterator();
 					List<String> hourTemp = new ArrayList<String>();

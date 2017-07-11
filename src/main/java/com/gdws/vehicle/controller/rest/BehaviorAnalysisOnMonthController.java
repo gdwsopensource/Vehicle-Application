@@ -47,13 +47,13 @@ public class BehaviorAnalysisOnMonthController {
 	 * 近一个月某天行为分析
 	 * @param cb
 	 * @param plateNo
-	 * @param crossTime
+	 * @param crossDate
 	 * @return
 	 */
 //	@RequestMapping("analysisOnMonth")
 //	@ResponseBody
-//	public JSONPObject analysisOnMonth(String cb, String plateNo, String crossTime) {
-//		JSONObject str = behaviorAnalysisOnMonthService.analysisOnMonth(plateNo, crossTime);
+//	public JSONPObject analysisOnMonth(String cb, String plateNo, String crossDate) {
+//		JSONObject str = behaviorAnalysisOnMonthService.analysisOnMonth(plateNo, crossDate);
 //		return new JSONPObject(cb, str.toString());
 //	}
 }

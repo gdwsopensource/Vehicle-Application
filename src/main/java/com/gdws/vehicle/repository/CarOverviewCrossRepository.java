@@ -27,7 +27,7 @@ public interface CarOverviewCrossRepository extends JpaRepository<CarOverviewCro
 	 * @return
 	 */
 
-	@Query(value = "select co.id as id,co.cross_id as cross_id,co.plate_no as plate_no,co.cross_time as cross_time,co.hour_num as hour_num,co.alert_type as alert_type,co.comment1 as comment1 from car_overview_cross co join black_list bl on co.plate_no=bl.plate_no where co.cross_id=?1 and co.cross_time=?2  ORDER BY hour_num", nativeQuery = true)
-	List<CarOverviewCross> findByCrossAndDate(String crossId, String crossTime);
+	@Query(value = "select co.id as id,co.cross_id as cross_id,co.plate_no as plate_no,co.cross_date as cross_date,co.hour_num as hour_num,co.alert_type as alert_type,co.comment1 as comment1 from car_overview_cross co join black_list bl on co.plate_no=bl.plate_no where co.cross_id=?1 and co.cross_date=?2  ORDER BY hour_num", nativeQuery = true)
+	List<CarOverviewCross> findByCrossAndDate(String crossId, String crossDate);
 	
 }

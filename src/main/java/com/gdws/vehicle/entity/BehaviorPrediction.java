@@ -24,7 +24,7 @@ public class BehaviorPrediction {
 	private String crossId;
 	private String crossName;
 	private String plateNo;
-	private String crossTime;
+	private String crossDate;
 	private String alertType;
 
 	/** @return 返回{@link #id} */
@@ -79,17 +79,17 @@ public class BehaviorPrediction {
 		this.plateNo = plateNo;
 	}
 
-	/** @return 返回{@link #crossTime} */
-	public String getCrossTime() {
-		return crossTime;
+	/** @return 返回{@link #crossDate} */
+	public String getCrossDate() {
+		return crossDate;
 	}
 
 	/**
-	 * @param crossTime
-	 *            设置{@link #crossTime}
+	 * @param crossDate
+	 *            设置{@link #crossDate}
 	 */
-	public void setCrossTime(String crossTime) {
-		this.crossTime = crossTime;
+	public void setCrossDate(String crossDate) {
+		this.crossDate = crossDate;
 	}
 
 	/** @return 返回{@link #alertType} */

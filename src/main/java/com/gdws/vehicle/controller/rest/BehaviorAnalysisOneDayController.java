@@ -31,8 +31,8 @@ public class BehaviorAnalysisOneDayController {
 
 	@RequestMapping("analysisOneDay")
 	@ResponseBody
-	public JSONPObject analysisOneDay(String cb, String crossTime, String plateNo) {
-		JSONObject str = service.analysisOneDay(crossTime,  plateNo);
+	public JSONPObject analysisOneDay(String cb, String crossDate, String plateNo) {
+		JSONObject str = service.analysisOneDay(crossDate,  plateNo);
 		return new JSONPObject(cb, str.toString());
 	}
 
