@@ -46,13 +46,13 @@ public class BehaviorAnalysisOnYearController {
 	 * 近一年某月行为分析
 	 * @param cb
 	 * @param plateNo
-	 * @param monthNum
+	 * @param crossMonth
 	 * @return
 	 */
 //	@RequestMapping("analysisOnYear")
 //	@ResponseBody
-//	public JSONPObject analysisOnYear(String cb, String plateNo,String monthNum) {
-//		JSONObject str = service.analysisOnYear(plateNo,monthNum);
+//	public JSONPObject analysisOnYear(String cb, String plateNo,String crossMonth) {
+//		JSONObject str = service.analysisOnYear(plateNo,crossMonth);
 //		return new JSONPObject(cb, str.toString());
 //	}
 	

@@ -22,7 +22,7 @@ public class CarCrossYearCnt {
 	@GeneratedValue
 	private int id;
 	private String plateNo;
-	private String monthNum;
+	private String crossMonth;
 	private int crossCnt;
 	private String crossId;
 	private String comment1;
@@ -43,12 +43,17 @@ public class CarCrossYearCnt {
 		this.plateNo = plateNo;
 	}
 
-	public String getMonthNum() {
-		return monthNum;
+	/** @return 返回{@link #crossMonth} */
+	public String getCrossMonth() {
+		return crossMonth;
 	}
 
-	public void setMonthNum(String monthNum) {
-		this.monthNum = monthNum;
+	/**
+	 * @param crossMonth
+	 *            设置{@link #crossMonth}
+	 */
+	public void setCrossMonth(String crossMonth) {
+		this.crossMonth = crossMonth;
 	}
 
 	public int getCrossCnt() {

@@ -24,9 +24,9 @@ public interface BehaviorAnalysisOnYearService {
 	/**
 	 * 近一年某月的行为分析
 	 * @param plateNo
-	 * @param monthNum
+	 * @param crossMonth
 	 * @return
 	 */
-//	JSONObject analysisOnYear(String plateNo,String monthNum);
+//	JSONObject analysisOnYear(String plateNo,String crossMonth);
 
 }

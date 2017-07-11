@@ -7,6 +7,8 @@
  */
 package com.gdws.vehicle.entity;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -24,7 +26,7 @@ public class CarCrossHourCnt {
 	private String plateNo;
 	private String hourNum;
 	private String crossId;
-	private String crossDate;
+	private Date crossDate;
 	private int crossCnt;
 	private String comment1;
 
@@ -81,7 +83,7 @@ public class CarCrossHourCnt {
 	}
 
 	/** @return 返回{@link #crossDate} */
-	public String getCrossDate() {
+	public Date getCrossDate() {
 		return crossDate;
 	}
 
@@ -89,7 +91,7 @@ public class CarCrossHourCnt {
 	 * @param crossDate
 	 *            设置{@link #crossDate}
 	 */
-	public void setCrossDate(String crossDate) {
+	public void setCrossDate(Date crossDate) {
 		this.crossDate = crossDate;
 	}
 

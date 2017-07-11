@@ -27,7 +27,7 @@ public class CarOverview {
 	private int id;
 	private String crossId;
 	private int carCrossCnt;
-	private String crossDate;
+	private Date crossDate;
 	private String comment1;
 
 	public int getId() {
@@ -55,7 +55,7 @@ public class CarOverview {
 	}
 
 	/** @return 返回{@link #crossDate} */
-	public String getCrossDate() {
+	public Date getCrossDate() {
 		return crossDate;
 	}
 
@@ -63,7 +63,7 @@ public class CarOverview {
 	 * @param crossDate
 	 *            设置{@link #crossDate}
 	 */
-	public void setCrossDate(String crossDate) {
+	public void setCrossDate(Date crossDate) {
 		this.crossDate = crossDate;
 	}
 
