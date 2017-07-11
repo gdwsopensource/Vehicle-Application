@@ -9,5 +9,5 @@ public interface CarFirstArrivalService {
 	 * @param crossTime
 	 * @return
 	 */
-	JSONObject getCarFirstArrial(String plateNo);
+	JSONObject getCarFirstArrial(String startTime,String endTime);
 }

@@ -9,6 +9,11 @@ import javax.persistence.Id;
  * @author miracle (Eric-lzy)
  * @version 1.0, 2017年7月9日 下午4:54:42
  */
+/**
+ *
+ * @author miracle (Eric-lzy)
+ * @version 1.0, 2017年7月11日 上午10:52:23
+ */
 @Entity
 public class CarFirstArrival {
 
@@ -17,7 +22,7 @@ public class CarFirstArrival {
 	private int id;
 	private String plateType;
 	private String plateNo;
-	private String crossTime;
+	private String crossDate;
 	private String arrivalType;
 	private String comment1;
 	/**
@@ -56,17 +61,13 @@ public class CarFirstArrival {
 	public void setPlateNo(String plateNo) {
 		this.plateNo = plateNo;
 	}
-	/**
-	 * @return
-	 */
-	public String getCrossTime() {
-		return crossTime;
+
+
+	public String getCrossDate() {
+		return crossDate;
 	}
-	/**
-	 * @param crossTime
-	 */
-	public void setCrossTime(String crossTime) {
-		this.crossTime = crossTime;
+	public void setCrossDate(String crossDate) {
+		this.crossDate = crossDate;
 	}
 	/**
 	 * @return
