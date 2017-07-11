@@ -32,28 +32,22 @@ public class BehaviorAnalysisOnYearController {
 
 	/**
 	 * 近一年总的行为分析
-	 * @param cb
 	 * @param plateNo
 	 * @return
 	 */
 	@RequestMapping("analysisOnYear")
-	@ResponseBody
-	public JSONPObject analysisOnYear(String cb, String plateNo) {
-		JSONObject str = service.analysisOnYear(plateNo);
-		return new JSONPObject(cb, str.toString());
+	public JSONObject analysisOnYear(String plateNo) {
+		return service.analysisOnYear(plateNo);
 	}
 	/**
 	 * 近一年某月行为分析
-	 * @param cb
 	 * @param plateNo
 	 * @param crossMonth
 	 * @return
 	 */
 //	@RequestMapping("analysisOnYear")
-//	@ResponseBody
-//	public JSONPObject analysisOnYear(String cb, String plateNo,String crossMonth) {
-//		JSONObject str = service.analysisOnYear(plateNo,crossMonth);
-//		return new JSONPObject(cb, str.toString());
+//	public JSONObject analysisOnYear(String plateNo,String crossMonth) {
+//		return service.analysisOnYear(plateNo,crossMonth);
 //	}
 	
 

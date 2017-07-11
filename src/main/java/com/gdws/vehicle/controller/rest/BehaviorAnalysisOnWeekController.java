@@ -33,9 +33,7 @@ public class BehaviorAnalysisOnWeekController {
 	private BehaviorAnalysisOnWeekService service;
 	
 	@RequestMapping("analysisOnWeek")
-	@ResponseBody
-	public JSONPObject analysisOnWeek(String cb, String plateNo) {
-		JSONObject str = service.analysisOnWeek(plateNo);
-		return new JSONPObject(cb, str.toString());
+	public JSONObject analysisOnWeek(String plateNo) {
+		return service.analysisOnWeek(plateNo);
 	}
 }

@@ -1,5 +1,5 @@
 /*
- * File Name：BehaviorPredictionController.java
+ * File Name：BehaviorPredictController.java
  *
  * Copyrighe：copyright@2017 GZSW Company, All Rights Reserved
  *
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.gdws.vehicle.service.BehaviorpredictionService;
+import com.gdws.vehicle.service.BehaviorpredictService;
 
 /**
  *
@@ -22,14 +22,12 @@ import com.gdws.vehicle.service.BehaviorpredictionService;
  * @version 1.0, 2017年7月1日 下午5:03:57
  */
 @RestController
-public class BehaviorPredictionController {
+public class BehaviorPredictController {
 	@Autowired
-	private BehaviorpredictionService service;
+	private BehaviorpredictService service;
 
 	@RequestMapping("behaviorPredict")
-	@ResponseBody
-	public JSONPObject behaviorPredict(String cb, String plateNo) {
-		JSONObject str = service.behaviorPredict(plateNo);
-		return new JSONPObject(cb, str.toString());
+	public JSONObject behaviorPredict(String plateNo) {
+		return service.behaviorPredict(plateNo);
 	}
 }

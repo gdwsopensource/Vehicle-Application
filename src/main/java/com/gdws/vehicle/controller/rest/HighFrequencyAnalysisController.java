@@ -31,25 +31,20 @@ public class HighFrequencyAnalysisController {
 	private HighFrequencyAnalysisService service;
 
 	/**
-	 * 
-	 * @param cb
+	 *
 	 * @param crossDate
 	 * @return
 	 */
 	@RequestMapping("highFrequencyAnalysis")
-	@ResponseBody
-	public JSONPObject highFrequencyAnalysis(String cb, String startTime, String endTime) {
-		JSONObject str = service.highFrequencyAnalysisAllCross(startTime, endTime);
-		return new JSONPObject(cb, str.toString());
+	public JSONObject highFrequencyAnalysis(String startTime, String endTime) {
+		return service.highFrequencyAnalysisAllCross(startTime, endTime);
 	}
 
 	
 	@RequestMapping("highFrequencyAnalysisAccrodingCrossName")
-	@ResponseBody
-	public JSONPObject highFrequencyAnalysisAccrodingCrossName(String cb, String startTime, String endTime,
+	public JSONObject highFrequencyAnalysisAccrodingCrossName(String startTime, String endTime,
 			String crossName) {
-		JSONObject str = service.highFrequencyAnalysisAccrodingCrossName(startTime, endTime, crossName);
-		return new JSONPObject(cb, str.toString());
+		return service.highFrequencyAnalysisAccrodingCrossName(startTime, endTime, crossName);
 	}
 	
 	
