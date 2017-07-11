@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSONObject;
 import com.gdws.vehicle.entity.BehaviorPrediction;
 import com.gdws.vehicle.repository.BehaviorPredictionRepository;
-import com.gdws.vehicle.service.BehaviorpredictionService;
+import com.gdws.vehicle.service.BehaviorpredictService;
 
 /**
  *
@@ -24,7 +24,7 @@ import com.gdws.vehicle.service.BehaviorpredictionService;
  * @version 1.0, 2017年7月1日 下午4:49:24
  */
 @Service
-public class BehaviorPredictionServiceImpl implements BehaviorpredictionService {
+public class BehaviorPredictServiceImpl implements BehaviorpredictService {
 	@Autowired
 	private BehaviorPredictionRepository behaviorPredictionRepository;
 

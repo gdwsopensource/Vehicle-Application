@@ -31,16 +31,13 @@ public class BehaviorAnalysisOnMonthController {
 	private BehaviorAnalysisOnMonthService behaviorAnalysisOnMonthService;
 
 	/**
-	 * 
-	 * @param cb
+	 *
 	 * @param plateNo
 	 * @return
 	 */
 	@RequestMapping("analysisOnMonth")
-	@ResponseBody
-	public JSONPObject analysisOnMonth(String cb, String plateNo) {
-		JSONObject str = behaviorAnalysisOnMonthService.analysisOnMonth(plateNo);
-		return new JSONPObject(cb, str.toString());
+	public JSONObject analysisOnMonth(String plateNo) {
+		return behaviorAnalysisOnMonthService.analysisOnMonth(plateNo);
 	}
 
 	/**
@@ -51,9 +48,7 @@ public class BehaviorAnalysisOnMonthController {
 	 * @return
 	 */
 //	@RequestMapping("analysisOnMonth")
-//	@ResponseBody
-//	public JSONPObject analysisOnMonth(String cb, String plateNo, String crossDate) {
-//		JSONObject str = behaviorAnalysisOnMonthService.analysisOnMonth(plateNo, crossDate);
-//		return new JSONPObject(cb, str.toString());
+//	public JSONObject analysisOnMonth(String plateNo, String crossDate) {
+//		return str = behaviorAnalysisOnMonthService.analysisOnMonth(plateNo, crossDate);
 //	}
 }

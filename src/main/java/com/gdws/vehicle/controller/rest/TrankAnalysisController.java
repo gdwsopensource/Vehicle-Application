@@ -31,10 +31,8 @@ public class TrankAnalysisController {
 	private TrankAnalysisService service;
 
 	@RequestMapping("trankAnalysisOnPlateNo")
-	@ResponseBody
-	public JSONPObject  JSONPObject(String cb, String plateNo, String startTime, String endTime) {
-		JSONObject str = service.trankAnalysisOnPlateNo(plateNo, startTime, endTime);
-		return new JSONPObject(cb, str.toString());
+	public JSONObject  JSONPObject(String plateNo, String startTime, String endTime) {
+		return service.trankAnalysisOnPlateNo(plateNo, startTime, endTime);
 	}
 	
 

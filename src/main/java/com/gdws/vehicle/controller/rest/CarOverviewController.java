@@ -38,10 +38,8 @@ public class CarOverviewController {
 	 */
 
 	@RequestMapping("/getCarOverview")
-	@ResponseBody
-	public JSONPObject getCarOverview(String cb, String crossDate) {
-		JSONObject str = carOverviewService.getCrossOverview(crossDate);
-		return new JSONPObject(cb, str.toString());
+	public JSONObject getCarOverview(String crossDate) {
+		return carOverviewService.getCrossOverview(crossDate);
 	}
 
 }
