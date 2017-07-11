@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.gdws.vehicle.entity.CarOd;
+import com.gdws.vehicle.entity.CarOD;
 import com.gdws.vehicle.repository.CarODAnalysisRepository;
 import com.gdws.vehicle.repository.CrossInfoRepository;
 import com.gdws.vehicle.service.CarODAnalysisSerivce;
@@ -37,18 +37,18 @@ public class CarODAnalysisServiceImpl implements CarODAnalysisSerivce {
 	public JSONObject carODAnalysis(String plateNo) {
 		JSONObject obj = new JSONObject();
 		try {
-			List<CarOd> carODList = carODAnalysisRepository.getCarODByPlateNO(plateNo);
-			Iterator<CarOd> carODListIter = carODList.iterator();
+			List<CarOD> carODList = carODAnalysisRepository.getCarODByPlateNO(plateNo);
+			Iterator<CarOD> carODListIter = carODList.iterator();
 			if (carODListIter.hasNext()) {
 				List<JSONObject> data = new ArrayList<JSONObject>();
 				String plateType = null;
 				while (carODListIter.hasNext()) {
-					CarOd carOD = carODListIter.next();
+					CarOD carOD = carODListIter.next();
 					JSONObject tmp = new JSONObject();
 					plateType = carOD.getPlateType();
 					tmp.put("crossMonth", carOD.getCrossMonth());
-					tmp.put("originCrossName", crossInfoRepository.findByCrossId(carOD.getOriginCrossId()));
-					tmp.put("destCrossName", crossInfoRepository.findByCrossId(carOD.getDestinationCrossId()));
+					tmp.put("originCrossName", crossInfoRepository.findByCrossId(carOD.getOriginCrossId()).getCrossName());
+					tmp.put("destCrossName", crossInfoRepository.findByCrossId(carOD.getDestinationCrossId()).getCrossName());
 					data.add(tmp);
 				}
 				obj.put("code", 200);

@@ -24,8 +24,8 @@ public class CarODAnalysisController {
 	@Autowired
 	private CarODAnalysisSerivce service;
 
-	@RequestMapping("carODAnalysis")
-	public JSONObject carODAnalysis(String plateNo) {
+	@RequestMapping("crossOdAnalysis")
+	public JSONObject crossODAnalysis(String plateNo) {
 		return service.carODAnalysis(plateNo);
 	}
 }

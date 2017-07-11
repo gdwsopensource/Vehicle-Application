@@ -10,6 +10,7 @@ package com.gdws.vehicle.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
@@ -17,7 +18,8 @@ import javax.persistence.Id;
  * @version 1.0, 2017年7月11日 上午10:59:50
  */
 @Entity
-public class CarOd {
+@Table(name="car_OD")
+public class CarOD {
 	@Id
 	@GeneratedValue
 	private int id;
