@@ -25,10 +25,10 @@ public interface CarOverviewRepository extends JpaRepository<CarOverview, Intege
 	/**
 	 * 获取预警数据
 	 * 
-	 * @param crossTime
+	 * @param crossDate
 	 * @return
 	 */
-	@Query(value = "select * from car_overview  where cross_time=?1", nativeQuery = true)
-	List<CarOverview> getCarOverview(String crossTime);
+	@Query(value = "select * from car_overview  where cross_date=?1", nativeQuery = true)
+	List<CarOverview> getCarOverview(String crossDate);
 
 }

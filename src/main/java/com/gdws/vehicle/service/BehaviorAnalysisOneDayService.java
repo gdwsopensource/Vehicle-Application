@@ -18,9 +18,9 @@ public interface BehaviorAnalysisOneDayService {
 	/**
 	 * 一天的行为分析
 	 * 
-	 * @param crossTime
+	 * @param crossDate
 	 * @param plateNo
 	 * @return
 	 */
-	JSONObject analysisOneDay(String crossTime, String plateNo);
+	JSONObject analysisOneDay(String crossDate, String plateNo);
 }

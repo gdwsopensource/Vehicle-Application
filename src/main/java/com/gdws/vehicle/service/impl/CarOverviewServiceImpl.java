@@ -38,11 +38,11 @@ public class CarOverviewServiceImpl implements CarOverviewService {
 	private CarOverviewCrossRepository carOverviewCrossRepository;
 
 	@Override
-	public JSONObject getCrossOverview(String crossTime) {
+	public JSONObject getCrossOverview(String crossDate) {
 		JSONObject obj = new JSONObject();
 		List<JSONObject> list = new ArrayList<JSONObject>();
 		try {
-			List<CarOverview> co = carOverviewRepository.getCarOverview(crossTime);
+			List<CarOverview> co = carOverviewRepository.getCarOverview(crossDate);
 			Iterator<CarOverview> carOverviewIter = co.iterator();
 			if (carOverviewIter.hasNext()) {
 				while (carOverviewIter.hasNext()) {
@@ -62,10 +62,10 @@ public class CarOverviewServiceImpl implements CarOverviewService {
 					tmp.put("alert_type", alertType);
 					tmp.put("cross_name", crossInfo.getCrossName());
 					tmp.put("cross_id", crossInfo.getCrossId());
-					tmp.put("lng", crossInfo.getLongitude());
-					tmp.put("lat", crossInfo.getLatitude());
-					tmp.put("gpslng", crossInfo.getGpslongitude());
-					tmp.put("gpslat", crossInfo.getGpslatitude());
+					tmp.put("lng", crossInfo.getBdLatitude());
+					tmp.put("lat", crossInfo.getBdLatitude());
+					tmp.put("gpslng", crossInfo.getGpsLongitude());
+					tmp.put("gpslat", crossInfo.getGpsLatitude());
 					list.add(tmp);
 				}
 				obj.put("data", list);
@@ -86,12 +86,12 @@ public class CarOverviewServiceImpl implements CarOverviewService {
 	}
 
 	@Override
-	public JSONObject getCarOverviewCross(String crossId, String crossTime) {
+	public JSONObject getCarOverviewCross(String crossId, String crossDate) {
 		JSONObject obj = new JSONObject();
 		List<JSONObject> arr = new ArrayList<JSONObject>();
 
 		try {
-			List<CarOverviewCross> list = carOverviewCrossRepository.findByCrossAndDate(crossId, crossTime);
+			List<CarOverviewCross> list = carOverviewCrossRepository.findByCrossAndDate(crossId, crossDate);
 
 			Iterator<CarOverviewCross> carOverviewCrossIter = list.iterator();
 			if (carOverviewCrossIter.hasNext()) {
@@ -102,7 +102,7 @@ public class CarOverviewServiceImpl implements CarOverviewService {
 					tmp.put("id", carOverviewCrossIterTemp.getId());
 					tmp.put("cross_name", crossInfo.getCrossName());
 					tmp.put("plate_no", carOverviewCrossIterTemp.getPlateNo());
-					tmp.put("cross_time", carOverviewCrossIterTemp.getCrossTime());
+					tmp.put("cross_time", carOverviewCrossIterTemp.getCrossDate());
 					tmp.put("hour_num", carOverviewCrossIterTemp.getHourNum()+":00-"+carOverviewCrossIterTemp.getHourNum()+":59");
 					tmp.put("alert_type", carOverviewCrossIterTemp.getAlertType());
 					arr.add(tmp);

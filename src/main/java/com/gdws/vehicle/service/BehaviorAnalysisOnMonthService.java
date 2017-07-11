@@ -25,5 +25,5 @@ public interface BehaviorAnalysisOnMonthService {
 	/**
 	 * 近一个月某天行为分析
 	 */
-	// JSONObject analysisOnMonth(String plateNo, String crossTime);
+	// JSONObject analysisOnMonth(String plateNo, String crossDate);
 }

@@ -27,6 +27,6 @@ public interface CarCrossHourCntRepository extends JpaRepository<CarCrossHourCnt
 	 * @param plateNo
 	 * @return
 	 */
-	@Query(value="SELECT * from car_cross_hour_cnt where cross_time=?1 and plate_no=?2 and cross_id=?3 ORDER BY hour_num asc",nativeQuery=true)
-	List<CarCrossHourCnt> getOneDayAnalysis(String crossTime,String plateNo,String crossId);
+	@Query(value="SELECT * from car_cross_hour_cnt where cross_date=?1 and plate_no=?2 and cross_id=?3 ORDER BY hour_num asc",nativeQuery=true)
+	List<CarCrossHourCnt> getOneDayAnalysis(String crossDate,String plateNo,String crossId);
 }

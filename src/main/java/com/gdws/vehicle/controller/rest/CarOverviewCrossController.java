@@ -38,14 +38,14 @@ public class CarOverviewCrossController {
 	 * 获取卡过车信息
 	 * 
 	 * @param crossName
-	 * @param crossTime
+	 * @param crossDate
 	 * @return
 	 */
 
 	@RequestMapping("/getCarOverviewCross")
 	@ResponseBody
-	public JSONPObject getCarOverviewCross(String cb, String crossId, String crossTime) {
-		JSONObject str = service.getCarOverviewCross(crossId, crossTime);
+	public JSONPObject getCarOverviewCross(String cb, String crossId, String crossDate) {
+		JSONObject str = service.getCarOverviewCross(crossId, crossDate);
 		return new JSONPObject(cb, str.toString());
 	}
 
