@@ -8,6 +8,7 @@
 package com.gdws.vehicle.service.impl;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -45,10 +46,11 @@ public class CarFakePlateServiceImpl implements CarFakePlateService{
 				List<JSONObject> data=new ArrayList<JSONObject>();
 				while(carFakePlateIter.hasNext()){
 					JSONObject tmp=new JSONObject();
+					 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd"); 
 					CarFakePlate carFakePlateObject=carFakePlateIter.next();
 					tmp.put("plate_type", carFakePlateObject.getPlateType());
 					tmp.put("plate_no", carFakePlateObject.getPlateNo());
-					tmp.put("cross_date", carFakePlateObject.getCrossDate());
+					tmp.put("cross_date", format.format(carFakePlateObject.getCrossDate()));
 					tmp.put("fake_plate_type", carFakePlateObject.getFakePlateType());
 					data.add(tmp);
 				}

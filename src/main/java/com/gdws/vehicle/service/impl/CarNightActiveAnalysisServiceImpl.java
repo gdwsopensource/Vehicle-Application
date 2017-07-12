@@ -8,6 +8,7 @@
 package com.gdws.vehicle.service.impl;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -45,10 +46,11 @@ private CarNightActiveAnalysisRepository carNightActiveAnalysisRepository;
 				List<JSONObject> data=new ArrayList<JSONObject>();
 				while(carNightActivelistIter.hasNext()){
 					JSONObject tmp=new JSONObject();
+					 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd"); 
 					CarNightActive carNightActiveObject=carNightActivelistIter.next();
 					tmp.put("plate_type", carNightActiveObject.getPlateType());
 					tmp.put("plate_no", carNightActiveObject.getPlateNo());
-					tmp.put("cross_date", carNightActiveObject.getCrossDate());
+					tmp.put("cross_date", format.format(carNightActiveObject.getCrossDate()));
 					tmp.put("day_cross_cnt", carNightActiveObject.getDayCrossCnt());
 					tmp.put("night_cross_cnt", carNightActiveObject.getNightCrossCnt());
 					tmp.put("night_active", carNightActiveObject.getNightActive());
