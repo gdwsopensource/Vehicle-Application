@@ -21,9 +21,9 @@ import com.gdws.vehicle.entity.CarNightActive;
  */
 public interface CarNightActiveAnalysisRepository extends JpaRepository<CarNightActive, Integer> {
 	
-	@Query(value = "select id as id,plate_no as plate_no,plate_type as plate_type,DATE_FORMAT(cross_date,'%Y-%m-%d') as cross_date,day_cross_cnt as day_cross_cnt,night_cross_cnt as night_cross_cnt,night_active as night_active,comment1 as comment1 from car_night_active where night_active=1 ORDER BY cross_date asc", nativeQuery = true)
+	@Query(value = "select id as id,plate_no as plate_no,plate_type as plate_type,DATE_FORMAT(cross_date,'%Y-%m-%d') as cross_date,day_cross_cnt as day_cross_cnt,night_cross_cnt as night_cross_cnt,night_active as night_active,comment1 as comment1 from car_night_active where night_active=1 ORDER BY cross_date desc", nativeQuery = true)
 	List<CarNightActive> getAllCarNightActive();
 
-	@Query(value = "select id as id,plate_no as plate_no,plate_type as plate_type,DATE_FORMAT(cross_date,'%Y-%m-%d') as cross_date,day_cross_cnt as day_cross_cnt,night_cross_cnt as night_cross_cnt,night_active as night_active,comment1 as comment1 from car_night_active where plate_no=?1 ORDER BY cross_date asc", nativeQuery = true)
+	@Query(value = "select id as id,plate_no as plate_no,plate_type as plate_type,DATE_FORMAT(cross_date,'%Y-%m-%d') as cross_date,day_cross_cnt as day_cross_cnt,night_cross_cnt as night_cross_cnt,night_active as night_active,comment1 as comment1 from car_night_active where plate_no=?1 ORDER BY cross_date desc", nativeQuery = true)
 	List<CarNightActive> getCarNightActiveByPlateNo(String plateNo);
 }
