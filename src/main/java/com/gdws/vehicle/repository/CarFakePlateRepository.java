@@ -25,7 +25,7 @@ public interface CarFakePlateRepository extends JpaRepository<CarFakePlate, Inte
 	 * 
 	 * @return
 	 */
-	@Query(value = "select id as id,plate_no as plate_no,plate_type as plate_type,DATE_FORMAT(cross_date,'%Y-%m-%d') as cross_date,fake_plate_type as fake_plate_type,comment1 as comment1 from car_fake_plate", nativeQuery = true)
+	@Query(value = "select id as id,plate_no as plate_no,plate_type as plate_type,DATE_FORMAT(cross_date,'%Y-%m-%d') as cross_date,fake_plate_type as fake_plate_type,comment1 as comment1 from car_fake_plate order by cross_date desc", nativeQuery = true)
 	List<CarFakePlate> getAllFakePlateCar();
 
 	/**
@@ -34,6 +34,6 @@ public interface CarFakePlateRepository extends JpaRepository<CarFakePlate, Inte
 	 * @param plateNo
 	 * @return
 	 */
-	@Query(value = "select id as id,plateNo as plateNo,plateType as plateType,DATE_FORMAT(crossDate,'%Y-%m-%d') as crossDate,fakePlateType as fakePlateType,comment1 as comment1 from car_fake_plate where plate_no=?1",nativeQuery=true)
+	@Query(value = "select id as id,plate_no as plate_no,plate_type as plate_type,DATE_FORMAT(cross_date,'%Y-%m-%d') as cross_date,fake_plate_type as fake_plate_type,comment1 as comment1 from car_fake_plate where plate_no=?1 order by cross_date desc",nativeQuery=true)
 	List<CarFakePlate> getFakePlateByPlateNo(String plateNo);
 }

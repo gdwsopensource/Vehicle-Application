@@ -16,7 +16,7 @@ import com.gdws.vehicle.entity.CarFirstArrival;
 public interface CarFirstArrivalRepository extends JpaRepository<CarFirstArrival, Integer> {
 
 	
-	@Query(value = "select * from car_first_arrival where cross_date >= ?1 and cross_date<= ?2", nativeQuery = true)
+	@Query(value = "select * from car_first_arrival where date_format(cross_date, '%Y-%m-%d') between ?1 and ?2 order by date_format(cross_date, '%Y-%m-%d')", nativeQuery = true)
 	List<CarFirstArrival> getCarFirstArrial(String startTime,String endTime);
 
 

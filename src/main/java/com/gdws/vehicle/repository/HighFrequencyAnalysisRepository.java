@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.gdws.vehicle.entity.HighFrequencyAnalysisRes;
 
@@ -36,7 +37,7 @@ public interface HighFrequencyAnalysisRepository extends JpaRepository<HighFrequ
 	 * @param crossName
 	 * @return
 	 */
-	@Query(value = "SELECT a.id as id,a.plate_no as plate_no,a.alert_type as alert_type,count(a.cross_id) as count,a.cross_id as cross_id,b.cross_name as cross_name  from car_cross_info a RIGHT JOIN cross_info b on a.cross_id=b.cross_id where date_format(a.alert_time, '%Y-%m-%d') between ?1 and ?2 and b.cross_name=?3 GROUP BY plate_no ORDER BY COUNT(a.cross_id) desc;", nativeQuery = true)
-	List<HighFrequencyAnalysisRes> getHighFrequencyOnCrossName(String startTime, String endTime,
-			String crossName);
+	@Query(value = "SELECT a.id as id,a.plate_no as plate_no,a.alert_type as alert_type,count(a.cross_id) as count,a.cross_id as cross_id,b.cross_name as cross_name  from car_cross_info a RIGHT JOIN cross_info b on a.cross_id=b.cross_id where date_format(a.alert_time, '%Y-%m-%d') between :startTime and :endTime and b.cross_name like CONCAT('%',:crossName,'%') GROUP BY plate_no ORDER BY COUNT(a.cross_id) desc;", nativeQuery = true)
+	List<HighFrequencyAnalysisRes> getHighFrequencyOnCrossName(@Param("startTime")String startTime,@Param("endTime") String endTime,
+			@Param("crossName") String crossName);
 }
