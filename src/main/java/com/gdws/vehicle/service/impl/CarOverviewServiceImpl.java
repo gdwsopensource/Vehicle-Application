@@ -62,7 +62,7 @@ public class CarOverviewServiceImpl implements CarOverviewService {
 					tmp.put("alert_type", alertType);
 					tmp.put("cross_name", crossInfo.getCrossName());
 					tmp.put("cross_id", crossInfo.getCrossId());
-					tmp.put("lng", crossInfo.getBdLatitude());
+					tmp.put("lng", crossInfo.getBdLongitude());
 					tmp.put("lat", crossInfo.getBdLatitude());
 					tmp.put("gpslng", crossInfo.getGpsLongitude());
 					tmp.put("gpslat", crossInfo.getGpsLatitude());
