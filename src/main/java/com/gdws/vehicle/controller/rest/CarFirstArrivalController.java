@@ -25,15 +25,15 @@ public class CarFirstArrivalController {
 	private CarFirstArrivalService carFirstArrivalService;
 
 
-	@RequestMapping("carFirstArrivalService")
-	@ResponseBody
-	public JSONPObject getCarFirstArrial(String cb, String startTime,String endTime) {
-		JSONObject str = carFirstArrivalService.getCarFirstArrial(startTime,endTime);
-		return new JSONPObject(cb, str.toString());
-	}
+//	@RequestMapping("carFirstArrivalService")
+//	@ResponseBody
+//	public JSONPObject getCarFirstArrial(String cb, String startTime,String endTime) {
+//		JSONObject str = carFirstArrivalService.getCarFirstArrial(startTime,endTime);
+//		return new JSONPObject(cb, str.toString());
+//	}
 	
-/*	@RequestMapping("carFirstArrivalService")
-	public JSONObject getCarFirstArrial(String cb, String startTime,String endTime) {
+	@RequestMapping("carFirstArrivalService")
+	public JSONObject getCarFirstArrial( String startTime,String endTime) {
 		return carFirstArrivalService.getCarFirstArrial(startTime,endTime);
-	}*/
+	}
 }
