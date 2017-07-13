@@ -38,12 +38,12 @@ public interface CarNightActiveAnalysisRepository extends JpaRepository<CarNight
 	@Query(value = " SELECT id as id,plate_no as plate_no,plate_type as plate_type,cross_date as cross_date,day_cross_cnt as day_cross_cnt,night_active as night_active,night_cross_cnt as night_cross_cnt,count(id) as count "
 			+ " from car_night_active " + " where DATE_FORMAT(cross_date,'%Y-%m-%d') BETWEEN ?1 and ?2 "
 			+ " and plate_no=?3", nativeQuery = true)
-	List<CarNightActiveRes> getAllCrossByPlateNo(String startTime, String endTime, String plateNo);
+	CarNightActiveRes getAllCrossByPlateNo(String startTime, String endTime, String plateNo);
 
 	@Query(value = " SELECT id as id,plate_no as plate_no,plate_type as plate_type,cross_date as cross_date,day_cross_cnt as day_cross_cnt,night_active as night_active,night_cross_cnt as night_cross_cnt,count(id) as count "
 			+ " from car_night_active " + " where DATE_FORMAT(cross_date,'%Y-%m-%d') BETWEEN ?1 and ?2 "
 			+ " and plate_no=?3 and night_active=1", nativeQuery = true)
-	List<CarNightActiveRes> getCarNightActiveByPlateNo(String startTime, String endTime, String plateNo);
+	CarNightActiveRes getCarNightActiveByPlateNo(String startTime, String endTime, String plateNo);
 
 	@Query(value = "select id as id,plate_no as plate_no,plate_type as plate_type,cross_date as cross_date,day_cross_cnt as day_cross_cnt,night_active as night_active,night_cross_cnt as night_cross_cnt,count(id) as count"
 			+ " from car_night_active "

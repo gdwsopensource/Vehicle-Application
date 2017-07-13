@@ -37,35 +37,34 @@ public class CarNightActiveAnalysisServiceImpl implements CarNightActiveAnalysis
 		JSONObject obj = new JSONObject();
 		try {
 			List<CarNightActiveRes> allCrossList = null;
-			List<CarNightActiveRes> nightActiveList = null;
+			CarNightActiveRes nightActiveList = null;
 			if (plateNo == null || plateNo == "") {
-				allCrossList=carNightActiveAnalysisRepository.getAllCrossGroupByPlateNo(startTime, endTime);
+				allCrossList = carNightActiveAnalysisRepository.getAllCrossGroupByPlateNo(startTime, endTime);
 				Iterator<CarNightActiveRes> carNightActivelistIter = allCrossList.iterator();
-				if(carNightActivelistIter.hasNext()){
+				if (carNightActivelistIter.hasNext()) {
 					List<JSONObject> data = new ArrayList<JSONObject>();
-					while(carNightActivelistIter.hasNext()){
+					while (carNightActivelistIter.hasNext()) {
 						CarNightActiveRes carNightActiveObject = carNightActivelistIter.next();
-						List<CarNightActiveRes> allCross=carNightActiveAnalysisRepository.getAllCrossByPlateNo(startTime, endTime, carNightActiveObject.getPlateNo());
-						nightActiveList = carNightActiveAnalysisRepository.getCarNightActiveByPlateNo(startTime, endTime,
-								carNightActiveObject.getPlateNo());
-						Double m = (double) allCross.size();
-						Double n = (double) nightActiveList.size();
+						CarNightActiveRes allCross = carNightActiveAnalysisRepository.getAllCrossByPlateNo(startTime,
+								endTime, carNightActiveObject.getPlateNo());
+						nightActiveList = carNightActiveAnalysisRepository.getCarNightActiveByPlateNo(startTime,
+								endTime, carNightActiveObject.getPlateNo());
+						Double m = (double)allCross.getCount();
+						Double n = (double)nightActiveList.getCount();
 						JSONObject tmp = new JSONObject();
-						tmp.put("plate_type", carNightActiveObject.getPlateType());
-						tmp.put("plate_no", carNightActiveObject.getPlateNo());
-						if (n / m >= 0.8) {
+						if (m > 0 && n / m >= 0.8) {
+							tmp.put("plate_type", carNightActiveObject.getPlateType());
+							tmp.put("plate_no", carNightActiveObject.getPlateNo());
 							tmp.put("night_active", 1);
-						} else {
-							tmp.put("night_active", 0);
+							data.add(tmp);
 						}
-						data.add(tmp);
 					}
 					obj.put("code", 200);
 					obj.put("message", "success");
-					obj.put("total", allCrossList.size());
+					obj.put("total", data.size());
 					obj.put("data", data);
 					obj.put("time", new Timestamp(System.currentTimeMillis()));
-				}else{
+				} else {
 					obj.put("code", 200);
 					obj.put("message", "success");
 					obj.put("total", allCrossList.size());
@@ -73,19 +72,19 @@ public class CarNightActiveAnalysisServiceImpl implements CarNightActiveAnalysis
 					obj.put("time", new Timestamp(System.currentTimeMillis()));
 				}
 			} else {
-				allCrossList = carNightActiveAnalysisRepository.getAllCrossByPlateNo(startTime, endTime, plateNo);
+				CarNightActiveRes allCross = carNightActiveAnalysisRepository.getAllCrossByPlateNo(startTime, endTime,
+						plateNo);
 				nightActiveList = carNightActiveAnalysisRepository.getCarNightActiveByPlateNo(startTime, endTime,
 						plateNo);
-				Iterator<CarNightActiveRes> carNightActivelistIter = allCrossList.iterator();
+				System.out.println(allCross.getCount());
 				List<JSONObject> data = new ArrayList<JSONObject>();
-				if (carNightActivelistIter.hasNext()) {
-					Double m = (double) allCrossList.size();
-					Double n = (double) nightActiveList.size();
+				if (allCross != null) {
+					Double m = (double)allCross.getCount();
+					Double n = (double)nightActiveList.getCount();
 					JSONObject tmp = new JSONObject();
-					CarNightActiveRes carNightActiveObject = carNightActivelistIter.next();
-					tmp.put("plate_type", carNightActiveObject.getPlateType());
-					tmp.put("plate_no", carNightActiveObject.getPlateNo());
-					if (n / m >= 0.8) {
+					if (m > 0 && n / m >= 0.8) {
+						tmp.put("plate_type", allCross.getPlateType());
+						tmp.put("plate_no", allCross.getPlateNo());
 						tmp.put("night_active", 1);
 					} else {
 						tmp.put("night_active", 0);
@@ -93,13 +92,13 @@ public class CarNightActiveAnalysisServiceImpl implements CarNightActiveAnalysis
 					data.add(tmp);
 					obj.put("code", 200);
 					obj.put("message", "success");
-					obj.put("total", allCrossList.size());
+					obj.put("total", 1);
 					obj.put("data", data);
 					obj.put("time", new Timestamp(System.currentTimeMillis()));
 				} else {
 					obj.put("code", 200);
 					obj.put("message", "success");
-					obj.put("total", allCrossList.size());
+					obj.put("total", 0);
 					obj.put("data", "null");
 					obj.put("time", new Timestamp(System.currentTimeMillis()));
 				}

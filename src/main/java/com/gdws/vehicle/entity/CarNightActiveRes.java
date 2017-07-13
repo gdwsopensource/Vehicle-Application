@@ -29,7 +29,7 @@ public class CarNightActiveRes {
 	private int dayCrossCnt;
 	private int nightCrossCnt;
 	private String nightActive;
-	private String count;
+	private int count;
 
 	/** @return 返回{@link #id} */
 	public int getId() {
@@ -123,7 +123,7 @@ public class CarNightActiveRes {
 	}
 
 	/** @return 返回{@link #count} */
-	public String getCount() {
+	public int getCount() {
 		return count;
 	}
 
@@ -131,7 +131,7 @@ public class CarNightActiveRes {
 	 * @param count
 	 *            设置{@link #count}
 	 */
-	public void setCount(String count) {
+	public void setCount(int count) {
 		this.count = count;
 	}
 
