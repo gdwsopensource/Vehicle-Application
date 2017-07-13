@@ -44,14 +44,14 @@ public class CarFirstArrivalServiceImpl implements CarFirstArrivalService{
 					obj.put("message", "success");
 					obj.put("total",list.size());
 					obj.put("startTime",startTime);
-					obj.put("endTime",startTime);
+					obj.put("endTime",endTime);
 					obj.put("data", data);
 
 				} else {
 					obj.put("code", 200);
 					obj.put("message", "success");
 					obj.put("startTime",startTime);
-					obj.put("endTime",startTime);
+					obj.put("endTime",endTime);
 					obj.put("data", null);
 				}
 			} catch (Exception e) {
