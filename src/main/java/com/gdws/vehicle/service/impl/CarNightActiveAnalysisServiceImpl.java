@@ -36,23 +36,24 @@ public class CarNightActiveAnalysisServiceImpl implements CarNightActiveAnalysis
 	public JSONObject carNightActiveAnalysis(String startTime, String endTime, String plateNo) {
 		JSONObject obj = new JSONObject();
 		try {
-			List<CarNightActiveRes> allCrossList = null;
-			CarNightActiveRes nightActiveList = null;
+			List<CarNightActive> allCrossList = null;
+			List<CarNightActive> nightActiveList = null;
 			if (plateNo == null || plateNo == "") {
 				allCrossList = carNightActiveAnalysisRepository.getAllCrossGroupByPlateNo(startTime, endTime);
-				Iterator<CarNightActiveRes> carNightActivelistIter = allCrossList.iterator();
+				Iterator<CarNightActive> carNightActivelistIter = allCrossList.iterator();
 				if (carNightActivelistIter.hasNext()) {
 					List<JSONObject> data = new ArrayList<JSONObject>();
 					while (carNightActivelistIter.hasNext()) {
-						CarNightActiveRes carNightActiveObject = carNightActivelistIter.next();
-						CarNightActiveRes allCross = carNightActiveAnalysisRepository.getAllCrossByPlateNo(startTime,
+						CarNightActive carNightActiveObject = carNightActivelistIter.next();
+						List<CarNightActive> allCross = carNightActiveAnalysisRepository.getAllCrossByPlateNo(startTime,
 								endTime, carNightActiveObject.getPlateNo());
 						nightActiveList = carNightActiveAnalysisRepository.getCarNightActiveByPlateNo(startTime,
 								endTime, carNightActiveObject.getPlateNo());
-						Double m = (double)allCross.getCount();
-						Double n = (double)nightActiveList.getCount();
+						Double m = (double) allCross.size();
+						Double n = (double)nightActiveList.size();
+						System.out.println(m+";"+n);
 						JSONObject tmp = new JSONObject();
-						if (m > 0 && n / m >= 0.8) {
+						if (m > 0 && n / m >= 0.3) {
 							tmp.put("plate_type", carNightActiveObject.getPlateType());
 							tmp.put("plate_no", carNightActiveObject.getPlateNo());
 							tmp.put("night_active", 1);
@@ -72,19 +73,20 @@ public class CarNightActiveAnalysisServiceImpl implements CarNightActiveAnalysis
 					obj.put("time", new Timestamp(System.currentTimeMillis()));
 				}
 			} else {
-				CarNightActiveRes allCross = carNightActiveAnalysisRepository.getAllCrossByPlateNo(startTime, endTime,
+				List<CarNightActive> allCross = carNightActiveAnalysisRepository.getAllCrossByPlateNo(startTime, endTime,
 						plateNo);
 				nightActiveList = carNightActiveAnalysisRepository.getCarNightActiveByPlateNo(startTime, endTime,
 						plateNo);
-				System.out.println(allCross.getCount());
 				List<JSONObject> data = new ArrayList<JSONObject>();
-				if (allCross != null) {
-					Double m = (double)allCross.getCount();
-					Double n = (double)nightActiveList.getCount();
+				Iterator<CarNightActive> allCrossIter = allCross.iterator();
+				if (allCrossIter.hasNext()) {
+					Double m = (double) allCross.size();
+					Double n = (double)nightActiveList.size();
+					System.out.println(m+";"+n);
 					JSONObject tmp = new JSONObject();
-					if (m > 0 && n / m >= 0.8) {
-						tmp.put("plate_type", allCross.getPlateType());
-						tmp.put("plate_no", allCross.getPlateNo());
+					if (m > 0 && n / m >= 0.4) {
+						tmp.put("plate_type", allCrossIter.next().getPlateType());
+						tmp.put("plate_no", allCrossIter.next().getPlateNo());
 						tmp.put("night_active", 1);
 					} else {
 						tmp.put("night_active", 0);
