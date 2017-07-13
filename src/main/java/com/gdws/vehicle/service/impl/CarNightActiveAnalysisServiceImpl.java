@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.gdws.vehicle.entity.CarNightActive;
-import com.gdws.vehicle.entity.CarNightActiveRes;
 import com.gdws.vehicle.repository.CarNightActiveAnalysisRepository;
 import com.gdws.vehicle.service.CarNightActiveAnalysisService;
 
