@@ -83,9 +83,10 @@ public class CarNightActiveAnalysisServiceImpl implements CarNightActiveAnalysis
 					Double n = (double)nightActiveList.size();
 					System.out.println(m+";"+n);
 					JSONObject tmp = new JSONObject();
-					if (m > 0 && n / m >= 0.4) {
-						tmp.put("plate_type", allCrossIter.next().getPlateType());
-						tmp.put("plate_no", allCrossIter.next().getPlateNo());
+					tmp.put("plate_type", allCrossIter.next().getPlateType());
+					tmp.put("plate_no", allCrossIter.next().getPlateNo());
+					if (m > 0 && n / m >= 0.3) {
+						
 						tmp.put("night_active", 1);
 					} else {
 						tmp.put("night_active", 0);
