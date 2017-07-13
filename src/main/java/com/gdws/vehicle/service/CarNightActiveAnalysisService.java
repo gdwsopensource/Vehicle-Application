@@ -15,5 +15,5 @@ import com.alibaba.fastjson.JSONObject;
  * @version 1.0, 2017年7月11日 下午4:11:19
  */
 public interface CarNightActiveAnalysisService {
-	JSONObject carNightActiveAnalysis(String plateNo);
+	JSONObject carNightActiveAnalysis(String startTime,String endTime,String plateNo);
 }

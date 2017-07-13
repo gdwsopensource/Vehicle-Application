@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.gdws.vehicle.entity.CarNightActive;
+import com.gdws.vehicle.entity.CarNightActiveRes;
 import com.gdws.vehicle.repository.CarNightActiveAnalysisRepository;
 import com.gdws.vehicle.service.CarNightActiveAnalysisService;
 
@@ -27,50 +28,85 @@ import com.gdws.vehicle.service.CarNightActiveAnalysisService;
  * @version 1.0, 2017年7月11日 下午4:12:21
  */
 @Service
-public class CarNightActiveAnalysisServiceImpl implements CarNightActiveAnalysisService{
-@Autowired
-private CarNightActiveAnalysisRepository carNightActiveAnalysisRepository;
+public class CarNightActiveAnalysisServiceImpl implements CarNightActiveAnalysisService {
+	@Autowired
+	private CarNightActiveAnalysisRepository carNightActiveAnalysisRepository;
+
 	@Override
-	public JSONObject carNightActiveAnalysis(String plateNo) {
+	public JSONObject carNightActiveAnalysis(String startTime, String endTime, String plateNo) {
 		JSONObject obj = new JSONObject();
-		try{
-			List<CarNightActive> carNightActivelist=null;
-			
-			if(plateNo==null || plateNo==""){
-				carNightActivelist=carNightActiveAnalysisRepository.getAllCarNightActive();
-			}else{
-				carNightActivelist=carNightActiveAnalysisRepository.getCarNightActiveByPlateNo(plateNo);
-			}
-			Iterator<CarNightActive> carNightActivelistIter=carNightActivelist.iterator();
-			if(carNightActivelistIter.hasNext()){
-				List<JSONObject> data=new ArrayList<JSONObject>();
-				while(carNightActivelistIter.hasNext()){
-					JSONObject tmp=new JSONObject();
-					 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd"); 
-					CarNightActive carNightActiveObject=carNightActivelistIter.next();
+		try {
+			List<CarNightActiveRes> allCrossList = null;
+			List<CarNightActiveRes> nightActiveList = null;
+			if (plateNo == null || plateNo == "") {
+				allCrossList=carNightActiveAnalysisRepository.getAllCrossGroupByPlateNo(startTime, endTime);
+				Iterator<CarNightActiveRes> carNightActivelistIter = allCrossList.iterator();
+				if(carNightActivelistIter.hasNext()){
+					List<JSONObject> data = new ArrayList<JSONObject>();
+					while(carNightActivelistIter.hasNext()){
+						CarNightActiveRes carNightActiveObject = carNightActivelistIter.next();
+						nightActiveList = carNightActiveAnalysisRepository.getCarNightActiveByPlateNo(startTime, endTime,
+								carNightActiveObject.getPlateNo());
+						Double m = (double) allCrossList.size();
+						Double n = (double) nightActiveList.size();
+						JSONObject tmp = new JSONObject();
+						tmp.put("plate_type", carNightActiveObject.getPlateType());
+						tmp.put("plate_no", carNightActiveObject.getPlateNo());
+						if (n / m >= 0.8) {
+							tmp.put("night_active", 1);
+						} else {
+							tmp.put("night_active", 0);
+						}
+						data.add(tmp);
+					}
+					obj.put("code", 200);
+					obj.put("message", "success");
+					obj.put("total", allCrossList.size());
+					obj.put("data", data);
+					obj.put("time", new Timestamp(System.currentTimeMillis()));
+				}else{
+					obj.put("code", 200);
+					obj.put("message", "success");
+					obj.put("total", allCrossList.size());
+					obj.put("data", "null");
+					obj.put("time", new Timestamp(System.currentTimeMillis()));
+				}
+			} else {
+				allCrossList = carNightActiveAnalysisRepository.getAllCrossByPlateNo(startTime, endTime, plateNo);
+				nightActiveList = carNightActiveAnalysisRepository.getCarNightActiveByPlateNo(startTime, endTime,
+						plateNo);
+				Iterator<CarNightActiveRes> carNightActivelistIter = allCrossList.iterator();
+				List<JSONObject> data = new ArrayList<JSONObject>();
+				if (carNightActivelistIter.hasNext()) {
+					Double m = (double) allCrossList.size();
+					Double n = (double) nightActiveList.size();
+					JSONObject tmp = new JSONObject();
+					CarNightActiveRes carNightActiveObject = carNightActivelistIter.next();
 					tmp.put("plate_type", carNightActiveObject.getPlateType());
 					tmp.put("plate_no", carNightActiveObject.getPlateNo());
-					tmp.put("cross_date", format.format(carNightActiveObject.getCrossDate()));
-					tmp.put("day_cross_cnt", carNightActiveObject.getDayCrossCnt());
-					tmp.put("night_cross_cnt", carNightActiveObject.getNightCrossCnt());
-					tmp.put("night_active", carNightActiveObject.getNightActive());
+					if (n / m >= 0.8) {
+						tmp.put("night_active", 1);
+					} else {
+						tmp.put("night_active", 0);
+					}
 					data.add(tmp);
+					obj.put("code", 200);
+					obj.put("message", "success");
+					obj.put("total", allCrossList.size());
+					obj.put("data", data);
+					obj.put("time", new Timestamp(System.currentTimeMillis()));
+				} else {
+					obj.put("code", 200);
+					obj.put("message", "success");
+					obj.put("total", allCrossList.size());
+					obj.put("data", "null");
+					obj.put("time", new Timestamp(System.currentTimeMillis()));
 				}
-				obj.put("code", 200);
-				obj.put("message","success");
-				obj.put("total", carNightActivelist.size());
-				obj.put("data", data);
-				obj.put("time", new Timestamp(System.currentTimeMillis()));
-			}else{
-				obj.put("code", 200);
-				obj.put("message","success");
-				obj.put("total", 0);
-				obj.put("data", "null");
-				obj.put("time", new Timestamp(System.currentTimeMillis()));
 			}
-		}catch (Exception e){
+
+		} catch (Exception e) {
 			obj.put("code", 500);
-			obj.put("message","error");
+			obj.put("message", "error");
 			obj.put("data", null);
 			obj.put("time", new Timestamp(System.currentTimeMillis()));
 			e.printStackTrace();

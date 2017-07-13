@@ -25,7 +25,7 @@ public class CarNightActiveAnalysisController {
 	private CarNightActiveAnalysisService service;
 
 	@RequestMapping("nightActiveAnalysis")
-	public JSONObject nightActiveAnalysis(String plateNo) {
-		return service.carNightActiveAnalysis(plateNo);
+	public JSONObject nightActiveAnalysis(String startTime, String endTime, String plateNo) {
+		return service.carNightActiveAnalysis(startTime, endTime, plateNo);
 	}
 }
