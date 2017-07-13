@@ -43,7 +43,7 @@ public class BehaviorPredictServiceImpl implements BehaviorpredictService {
 					tmp.put("cross_id", bp.get(i).getCrossId());
 					tmp.put("cross_name", bp.get(i).getCrossName());
 					tmp.put("plate_no", bp.get(i).getPlateNo());
-					tmp.put("cross_date", format.format(bp.get(i).getCrossDate()));
+					tmp.put("cross_date", bp.get(i).getCrossDate());
 					tmp.put("alert_type", bp.get(i).getAlertType());
 					arr.add(tmp);
 				}
