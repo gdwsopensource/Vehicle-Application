@@ -45,9 +45,10 @@ public class CarNightActiveAnalysisServiceImpl implements CarNightActiveAnalysis
 					List<JSONObject> data = new ArrayList<JSONObject>();
 					while(carNightActivelistIter.hasNext()){
 						CarNightActiveRes carNightActiveObject = carNightActivelistIter.next();
+						List<CarNightActiveRes> allCross=carNightActiveAnalysisRepository.getAllCrossByPlateNo(startTime, endTime, carNightActiveObject.getPlateNo());
 						nightActiveList = carNightActiveAnalysisRepository.getCarNightActiveByPlateNo(startTime, endTime,
 								carNightActiveObject.getPlateNo());
-						Double m = (double) allCrossList.size();
+						Double m = (double) allCross.size();
 						Double n = (double) nightActiveList.size();
 						JSONObject tmp = new JSONObject();
 						tmp.put("plate_type", carNightActiveObject.getPlateType());
