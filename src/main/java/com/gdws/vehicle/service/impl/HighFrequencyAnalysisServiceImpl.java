@@ -32,7 +32,6 @@ public class HighFrequencyAnalysisServiceImpl implements HighFrequencyAnalysisSe
 
 	@Override
 	public JSONObject highFrequencyAnalysisAllCross(String startTime,String endTime) {
-		// TODO Auto-generated method stub
 		JSONObject obj = new JSONObject();
 		try {
 			List<HighFrequencyAnalysisRes> highFrequencyAnalysisList = highFrequencyAnalysisRepository
@@ -84,6 +83,15 @@ public class HighFrequencyAnalysisServiceImpl implements HighFrequencyAnalysisSe
 		// TODO Auto-generated method stub
 		JSONObject obj = new JSONObject();
 		try {
+			String string = "";
+			String[] arr = crossName.split("");
+			for (int i = 0; i < crossName.length(); i++) {
+				if (i < crossName.length() - 1) {
+					arr[i] = arr[i] + "%";
+				}
+				string += arr[i];
+			}
+			crossName=string;
 			List<HighFrequencyAnalysisRes> highFrequencyAnalysisList = highFrequencyAnalysisRepository.getHighFrequencyOnCrossName(startTime, endTime, crossName);;
 			Iterator<HighFrequencyAnalysisRes> highFrequencyIter=highFrequencyAnalysisList.iterator();
 			if(highFrequencyIter.hasNext()){
