@@ -111,7 +111,7 @@ public class CarOverviewServiceImpl implements CarOverviewService {
 				obj.put("message", "success");
 				obj.put("data", arr);
 			} else {
-				obj.put("data", "no data");
+				obj.put("data", "null");
 				obj.put("code", 200);
 				obj.put("message", "success");
 			}
