@@ -7,6 +7,7 @@
  */
 package com.gdws.vehicle.service.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,11 +38,12 @@ public class BehaviorPredictServiceImpl implements BehaviorpredictService {
 				ArrayList arr = new ArrayList();
 				for (int i = 0; i < bp.size(); i++) {
 					JSONObject tmp = new JSONObject();
+					 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd"); 
 					tmp.put("id", bp.get(i).getId());
 					tmp.put("cross_id", bp.get(i).getCrossId());
 					tmp.put("cross_name", bp.get(i).getCrossName());
 					tmp.put("plate_no", bp.get(i).getPlateNo());
-					tmp.put("cross_time", bp.get(i).getCrossDate());
+					tmp.put("cross_date", format.format(bp.get(i).getCrossDate()));
 					tmp.put("alert_type", bp.get(i).getAlertType());
 					arr.add(tmp);
 				}

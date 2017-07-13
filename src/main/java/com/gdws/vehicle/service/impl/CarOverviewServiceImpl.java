@@ -7,6 +7,7 @@
  */
 package com.gdws.vehicle.service.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -99,10 +100,11 @@ public class CarOverviewServiceImpl implements CarOverviewService {
 					JSONObject tmp = new JSONObject();
 					CarOverviewCross carOverviewCrossIterTemp = carOverviewCrossIter.next();
 					CrossInfo crossInfo = crossInfoRepository.findByCrossId(crossId);
+					 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd"); 
 					tmp.put("id", carOverviewCrossIterTemp.getId());
 					tmp.put("cross_name", crossInfo.getCrossName());
 					tmp.put("plate_no", carOverviewCrossIterTemp.getPlateNo());
-					tmp.put("cross_time", carOverviewCrossIterTemp.getCrossDate());
+					tmp.put("cross_date", format.format(carOverviewCrossIterTemp.getCrossDate()));
 					tmp.put("hour_num", carOverviewCrossIterTemp.getHourNum()+":00-"+carOverviewCrossIterTemp.getHourNum()+":59");
 					tmp.put("alert_type", carOverviewCrossIterTemp.getAlertType());
 					arr.add(tmp);
