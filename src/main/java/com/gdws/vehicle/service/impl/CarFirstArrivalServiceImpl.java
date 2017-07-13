@@ -32,10 +32,9 @@ public class CarFirstArrivalServiceImpl implements CarFirstArrivalService{
 					List<JSONObject> data = new ArrayList<JSONObject>();
 					while (listIter.hasNext()) {
 						CarFirstArrival res = listIter.next();
-						 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd"); 
 						JSONObject tmp = new JSONObject();
 						tmp.put("plate_no", res.getPlateNo());
-						tmp.put("cross_date",format.format(res.getCrossDate()));
+						tmp.put("cross_date",res.getCrossDate());
 						tmp.put("arrival_type",res.getArrivalType());
 						data.add(tmp);
 						
