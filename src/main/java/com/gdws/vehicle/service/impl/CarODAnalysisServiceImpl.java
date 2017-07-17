@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.gdws.vehicle.entity.CarOD;
+import com.gdws.vehicle.entity.CrossInfo;
 import com.gdws.vehicle.repository.CarODAnalysisRepository;
 import com.gdws.vehicle.repository.CrossInfoRepository;
 import com.gdws.vehicle.service.CarODAnalysisSerivce;
@@ -41,7 +42,6 @@ public class CarODAnalysisServiceImpl implements CarODAnalysisSerivce {
 		try {
 			List<CarOD> carODList = carODAnalysisRepository.getCarODByPlateNO(plateNo);
 			Iterator<CarOD> carODListIter = carODList.iterator();
-			DateFormat format = new SimpleDateFormat("yyyy-MM");
 			if (carODListIter.hasNext()) {
 				List<JSONObject> data = new ArrayList<JSONObject>();
 				String plateType = null;
@@ -49,10 +49,15 @@ public class CarODAnalysisServiceImpl implements CarODAnalysisSerivce {
 					CarOD carOD = carODListIter.next();
 					JSONObject tmp = new JSONObject();
 					plateType = carOD.getPlateType();
-					tmp.put("crossMonth", format.parse(carOD.getCrossMonth()));
-					System.out.println(format.parse(carOD.getCrossMonth()));
-					tmp.put("originCrossName", crossInfoRepository.findByCrossId(carOD.getOriginCrossId()).getCrossName());
-					tmp.put("destCrossName", crossInfoRepository.findByCrossId(carOD.getDestinationCrossId()).getCrossName());
+					tmp.put("crossMonth", carOD.getCrossMonth());
+					CrossInfo crossInfoO=crossInfoRepository.findByCrossId(carOD.getOriginCrossId());
+					CrossInfo crossInfoD=crossInfoRepository.findByCrossId(carOD.getDestinationCrossId());
+					tmp.put("originCrossName", crossInfoO.getCrossName());
+					tmp.put("origin_lng", crossInfoO.getBdLongitude());
+					tmp.put("origin_lat", crossInfoO.getBdLatitude());
+					tmp.put("destCrossName", crossInfoD.getCrossName());
+					tmp.put("dest_lng", crossInfoD.getBdLongitude());
+					tmp.put("dest_lat", crossInfoD.getBdLatitude());
 					data.add(tmp);
 				}
 				obj.put("code", 200);
