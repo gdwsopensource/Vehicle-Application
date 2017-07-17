@@ -8,6 +8,8 @@
 package com.gdws.vehicle.service.impl;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -39,6 +41,7 @@ public class CarODAnalysisServiceImpl implements CarODAnalysisSerivce {
 		try {
 			List<CarOD> carODList = carODAnalysisRepository.getCarODByPlateNO(plateNo);
 			Iterator<CarOD> carODListIter = carODList.iterator();
+			DateFormat format = new SimpleDateFormat("yyyy-MM");
 			if (carODListIter.hasNext()) {
 				List<JSONObject> data = new ArrayList<JSONObject>();
 				String plateType = null;
@@ -46,7 +49,8 @@ public class CarODAnalysisServiceImpl implements CarODAnalysisSerivce {
 					CarOD carOD = carODListIter.next();
 					JSONObject tmp = new JSONObject();
 					plateType = carOD.getPlateType();
-					tmp.put("crossMonth", carOD.getCrossMonth());
+					tmp.put("crossMonth", format.parse(carOD.getCrossMonth()));
+					System.out.println(format.parse(carOD.getCrossMonth()));
 					tmp.put("originCrossName", crossInfoRepository.findByCrossId(carOD.getOriginCrossId()).getCrossName());
 					tmp.put("destCrossName", crossInfoRepository.findByCrossId(carOD.getDestinationCrossId()).getCrossName());
 					data.add(tmp);
