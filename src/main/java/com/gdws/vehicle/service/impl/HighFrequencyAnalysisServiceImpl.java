@@ -44,7 +44,7 @@ private CarCrossInfoRepository carCrossInfoRepository;
 				while(highFrequencyIter.hasNext()){
 					CarCrossInfoRes res=highFrequencyIter.next();
 					JSONObject tmp=new JSONObject();
-					tmp.put("cross_id", res.getId());
+					tmp.put("id", res.getId());
 //					tmp.put("cross_name", res.getCrossName());
 					tmp.put("car_plateNo", res.getPlateNo());
 					tmp.put("warning_type", res.getAlertType());
