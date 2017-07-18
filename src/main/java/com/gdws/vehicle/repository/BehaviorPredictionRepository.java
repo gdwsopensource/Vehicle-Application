@@ -26,6 +26,6 @@ public interface BehaviorPredictionRepository extends JpaRepository<BehaviorPred
 	 * @param plateNo
 	 * @return
 	 */
-	@Query(value = "select co.id as id,co.cross_id as cross_id,ci.cross_name as cross_name,co.plate_no as plate_no,date_format(co.cross_date,'%Y-%m-%d') as cross_date ,co.alert_type as alert_type from car_overview_cross co join cross_info ci on co.cross_id=ci.cross_id where co.plate_no=?1", nativeQuery = true)
+	@Query(value = "select co.id as id,co.cross_id as cross_id,ci.cross_name as cross_name,co.plate_no as plate_no,date_format(co.cross_date,'%Y-%m-%d') as cross_date ,co.alert_type as alert_type from car_overview_cross co join cross_info ci on co.cross_id=ci.cross_id where co.plate_no like ?1 limit 0,500", nativeQuery = true)
 	List<BehaviorPrediction> behaviorPredict(String plateNo);
 }

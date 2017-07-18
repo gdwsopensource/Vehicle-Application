@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.gdws.vehicle.entity.TrankAnalysis;
 
@@ -28,6 +29,6 @@ public interface TrankAnalysisRespository extends JpaRepository<TrankAnalysis, I
 	 * @param endTime
 	 * @return
 	 */
-	@Query(value = "SELECT a.id as id,a.plate_type as plate_type,a.alert_type as alert_type,a.cross_direction as cross_direction,a.alert_time as alert_time,b.bd_latitude as lat,b.bd_longitude as lng,b.cross_id as cross_id,b.cross_name as cross_name from car_cross_info a left JOIN cross_info b on a.cross_id=b.cross_id where  a.plate_no=?1 and DATE_FORMAT(a.alert_time,'%Y-%m-%d') BETWEEN ?2 and ?3  ORDER BY DATE_FORMAT(a.alert_time,'%Y-%m-%d %H:%m');", nativeQuery = true)
-	List<TrankAnalysis> trankAnalysisOnPlateNo(String plateNo, String startTime, String endTime);
+	@Query(value = "SELECT a.id as id,a.plate_no as plate_no,a.plate_type as plate_type,a.alert_type as alert_type,a.cross_direction as cross_direction,a.alert_time as alert_time,b.bd_latitude as lat,b.bd_longitude as lng,b.cross_id as cross_id,b.cross_name as cross_name from car_cross_info a left JOIN cross_info b on a.cross_id=b.cross_id where  a.plate_no like  :plateNo and DATE_FORMAT(a.alert_time,'%Y-%m-%d') BETWEEN :startTime and :endTime  ORDER BY DATE_FORMAT(a.alert_time,'%Y-%m-%d %H:%m') limit 0,500;", nativeQuery = true)
+	List<TrankAnalysis> trankAnalysisOnPlateNo(@Param("plateNo")String plateNo,@Param("startTime") String startTime,@Param("endTime") String endTime);
 }

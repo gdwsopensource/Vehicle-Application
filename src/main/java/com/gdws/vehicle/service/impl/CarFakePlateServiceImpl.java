@@ -20,6 +20,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.gdws.vehicle.entity.CarFakePlate;
 import com.gdws.vehicle.repository.CarFakePlateRepository;
 import com.gdws.vehicle.service.CarFakePlateService;
+import com.gdws.vehicle.utils.ParamsFormat;
 
 /**
  *
@@ -39,6 +40,8 @@ public class CarFakePlateServiceImpl implements CarFakePlateService{
 			if(plateNo==null || plateNo==""){
 				carFakePlate=carFakePlateRepository.getAllFakePlateCar();
 			}else{
+				ParamsFormat params=new ParamsFormat();
+				plateNo=params.ParamsFormat(plateNo);
 				carFakePlate=carFakePlateRepository.getFakePlateByPlateNo(plateNo);
 			}
 			Iterator<CarFakePlate> carFakePlateIter=carFakePlate.iterator();
