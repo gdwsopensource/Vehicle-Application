@@ -21,6 +21,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.gdws.vehicle.entity.TrankAnalysis;
 import com.gdws.vehicle.repository.TrankAnalysisRespository;
 import com.gdws.vehicle.service.TrankAnalysisService;
+import com.gdws.vehicle.utils.ParamsFormat;
 
 /**
  *
@@ -35,34 +36,33 @@ public class TrankAnalysisServiceImpl implements TrankAnalysisService {
 	@Override
 	public JSONObject trankAnalysisOnPlateNo(String plateNo, String startTime, String endTime) {
 		JSONObject obj = new JSONObject();
+		ParamsFormat params=new ParamsFormat();
+		plateNo=params.ParamsFormat(plateNo);
 		try {
 			List<TrankAnalysis> trankAnalysisOnPlateNoList=trankAnalysisRespository.trankAnalysisOnPlateNo(plateNo, startTime, endTime);
 			Iterator<TrankAnalysis> trankAnalysisOnPlateNoListIter=trankAnalysisOnPlateNoList.iterator();
 			 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm"); 
 			if(trankAnalysisOnPlateNoListIter.hasNext()){
-				String alertType=null;
-				String plateType=null;
 				List<JSONObject> data=new ArrayList<JSONObject>();
 				while(trankAnalysisOnPlateNoListIter.hasNext()){
 					JSONObject tmp=new JSONObject();
 					TrankAnalysis trankAnalysisData=trankAnalysisOnPlateNoListIter.next();
 					tmp.put("id", trankAnalysisData.getId());
+					tmp.put("plateNo",trankAnalysisData.getPlateNo());
+					tmp.put("alertType", trankAnalysisData.getAlertType());
+					tmp.put("plateType", trankAnalysisData.getPlateType());
 					tmp.put("crossName",trankAnalysisData.getCrossName());
 					tmp.put("crossId", trankAnalysisData.getCrossId());
 					tmp.put("lat", trankAnalysisData.getLat());
 					tmp.put("lng", trankAnalysisData.getLng());
 					tmp.put("crossDirection", trankAnalysisData.getCrossDirection());
 					tmp.put("alertTime", format.format(format.parse(trankAnalysisData.getAlertTime())));
-					alertType=trankAnalysisData.getAlertType();
-					plateType=trankAnalysisData.getPlateType();
 					data.add(tmp);
 				}
 				obj.put("code", 200);
 				obj.put("message", "success");
-				obj.put("plateNo",plateNo);
-				obj.put("alertType", alertType);
-				obj.put("plateType", plateType);
 				obj.put("data", data);
+				obj.put("total", trankAnalysisOnPlateNoList.size());
 				obj.put("time", new Timestamp(System.currentTimeMillis()));
 			}else{
 				obj.put("code", 200);

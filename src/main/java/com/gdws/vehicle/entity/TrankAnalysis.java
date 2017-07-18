@@ -21,6 +21,7 @@ public class TrankAnalysis {
 	@Id
 	@GeneratedValue
 	private int id;
+	private String plateNo;
 	private String crossDirection;
 	private String alertTime;
 	private String lat;
@@ -41,6 +42,19 @@ public class TrankAnalysis {
 	 */
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	/** @return 返回{@link #plateNo} */
+	public String getPlateNo() {
+		return plateNo;
+	}
+
+	/**
+	 * @param plateNo
+	 *            设置{@link #plateNo}
+	 */
+	public void setPlateNo(String plateNo) {
+		this.plateNo = plateNo;
 	}
 
 	/** @return 返回{@link #crossDirection} */
@@ -139,7 +153,10 @@ public class TrankAnalysis {
 		return alertType;
 	}
 
-	/** @param alertType 设置{@link #alertType} */
+	/**
+	 * @param alertType
+	 *            设置{@link #alertType}
+	 */
 	public void setAlertType(String alertType) {
 		this.alertType = alertType;
 	}

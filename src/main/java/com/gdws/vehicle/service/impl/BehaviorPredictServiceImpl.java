@@ -7,6 +7,7 @@
  */
 package com.gdws.vehicle.service.impl;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.gdws.vehicle.entity.BehaviorPrediction;
 import com.gdws.vehicle.repository.BehaviorPredictionRepository;
 import com.gdws.vehicle.service.BehaviorpredictService;
+import com.gdws.vehicle.utils.ParamsFormat;
 
 /**
  *
@@ -33,32 +35,37 @@ public class BehaviorPredictServiceImpl implements BehaviorpredictService {
 	public JSONObject behaviorPredict(String plateNo) {
 		JSONObject obj = new JSONObject();
 		try {
+			ParamsFormat params=new ParamsFormat();
+			plateNo=params.ParamsFormat(plateNo);
 			List<BehaviorPrediction> bp = behaviorPredictionRepository.behaviorPredict(plateNo);
 			if (bp.size() > 0) {
-				ArrayList arr = new ArrayList();
+				List<JSONObject> data = new ArrayList<JSONObject>();
 				for (int i = 0; i < bp.size(); i++) {
 					JSONObject tmp = new JSONObject();
-					 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd"); 
 					tmp.put("id", bp.get(i).getId());
 					tmp.put("cross_id", bp.get(i).getCrossId());
 					tmp.put("cross_name", bp.get(i).getCrossName());
 					tmp.put("plate_no", bp.get(i).getPlateNo());
 					tmp.put("cross_date", bp.get(i).getCrossDate());
 					tmp.put("alert_type", bp.get(i).getAlertType());
-					arr.add(tmp);
+					data.add(tmp);
 				}
 				obj.put("code", 200);
 				obj.put("message", "success");
-				obj.put("data", arr);
+				obj.put("total", bp.size());
+				obj.put("data", data);
+				obj.put("time", new Timestamp(System.currentTimeMillis()));
 			} else {
 				obj.put("code", 200);
 				obj.put("message", "success");
 				obj.put("data", "null");
+				obj.put("time", new Timestamp(System.currentTimeMillis()));
 			}
 		} catch (Exception e) {
 			obj.put("code", 500);
 			obj.put("message", "failure");
 			obj.put("data", null);
+			obj.put("time", new Timestamp(System.currentTimeMillis()));
 			e.printStackTrace();
 		}
 		return obj;
