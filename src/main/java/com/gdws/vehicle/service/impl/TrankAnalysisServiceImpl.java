@@ -8,7 +8,9 @@
 package com.gdws.vehicle.service.impl;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -36,6 +38,7 @@ public class TrankAnalysisServiceImpl implements TrankAnalysisService {
 		try {
 			List<TrankAnalysis> trankAnalysisOnPlateNoList=trankAnalysisRespository.trankAnalysisOnPlateNo(plateNo, startTime, endTime);
 			Iterator<TrankAnalysis> trankAnalysisOnPlateNoListIter=trankAnalysisOnPlateNoList.iterator();
+			 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm"); 
 			if(trankAnalysisOnPlateNoListIter.hasNext()){
 				String alertType=null;
 				String plateType=null;
@@ -49,7 +52,7 @@ public class TrankAnalysisServiceImpl implements TrankAnalysisService {
 					tmp.put("lat", trankAnalysisData.getLat());
 					tmp.put("lng", trankAnalysisData.getLng());
 					tmp.put("crossDirection", trankAnalysisData.getCrossDirection());
-					tmp.put("alertTime", trankAnalysisData.getAlertTime());
+					tmp.put("alertTime", format.format(format.parse(trankAnalysisData.getAlertTime())));
 					alertType=trankAnalysisData.getAlertType();
 					plateType=trankAnalysisData.getPlateType();
 					data.add(tmp);

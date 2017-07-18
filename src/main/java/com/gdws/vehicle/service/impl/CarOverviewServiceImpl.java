@@ -105,7 +105,13 @@ public class CarOverviewServiceImpl implements CarOverviewService {
 					tmp.put("cross_name", crossInfo.getCrossName());
 					tmp.put("plate_no", carOverviewCrossIterTemp.getPlateNo());
 					tmp.put("cross_date", format.format(carOverviewCrossIterTemp.getCrossDate()));
-					tmp.put("hour_num", carOverviewCrossIterTemp.getHourNum()+":00-"+carOverviewCrossIterTemp.getHourNum()+":59");
+					String hour=null;
+					if(Integer.parseInt(carOverviewCrossIterTemp.getHourNum())<10){
+						hour="0"+Integer.parseInt(carOverviewCrossIterTemp.getHourNum());
+					}else{
+						hour=carOverviewCrossIterTemp.getHourNum();
+					}
+					tmp.put("hour_num", hour+":00-"+hour+":59");
 					tmp.put("alert_type", carOverviewCrossIterTemp.getAlertType());
 					arr.add(tmp);
 				}
