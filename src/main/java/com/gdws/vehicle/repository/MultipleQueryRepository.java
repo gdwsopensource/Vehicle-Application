@@ -38,11 +38,11 @@ public interface MultipleQueryRepository extends JpaRepository<MultipleQuery, In
 	// where c.cross_name like '%%'
 
 	@Query(value = "SELECT a.id as id,a.plate_no as plate_no,a.plate_type as plate_type,"
-			+ "date_format(a.alert_time,'%Y-%m-%d %H:%m') as alert_time,a.alert_type as alert_type,a.cross_direction as cross_direction,"
+			+ "date_format(a.alert_time,'%Y-%m-%d %H:%i') as alert_time,a.alert_type as alert_type,a.cross_direction as cross_direction,"
 			+ "a.cross_id as cross_id,b.cross_name as cross_name "
 			+ " from car_cross_info a LEFT JOIN cross_info b on a.cross_id=b.cross_id "
 			+ " where a.plate_no like  CONCAT('%',:plateNo,'%') " + " and a.plate_type like CONCAT('%',:plateType,'%') "
-			+ " and date_format(a.alert_time,'%Y-%m-%d %H:%m') between date_format(:startTime,'%Y-%m-%d %H:%m') and date_format(:endTime,'%Y-%m-%d %H:%m')"
+			+ " and date_format(a.alert_time,'%Y-%m-%d %H:%i') between date_format(:startTime,'%Y-%m-%d %H:%i') and date_format(:endTime,'%Y-%m-%d %H:%i')"
 			+ " and a.alert_type like CONCAT('%',:alertType,'%') "
 			+ " and b.cross_name like CONCAT('%',:crossName,'%') "
 			+ " order by a.alert_time desc "

@@ -49,7 +49,7 @@ public class CarOverviewServiceImpl implements CarOverviewService {
 		try {
 			List<CarOverview> co = carOverviewRepository.getCarOverview(crossDate);
 			Double totalCarCrossCnt = (double) carOverviewSumRepository.getTotalCarCrossCnt(crossDate).getTotal();
-			Iterator<CarOverview> carOverviewIter = co.iterator();
+			Iterator<CarOverview> carOverviewIter = co.iterator();	
 			if (carOverviewIter.hasNext()) {
 				while (carOverviewIter.hasNext()) {
 					JSONObject tmp = new JSONObject();
